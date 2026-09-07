@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>El Mundo del Café - Proyecto CSS</title>
+    <!-- Google Fonts: Poppins y Merriweather -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="estilos.css" />
+  </head>
+  <body>
+    <header>
+      <h1>El Mundo del Café de Especialidad</h1>
+      <nav>
+        <!-- Ejercicio 4: href solo en 2 de los 4 enlaces -->
+        <ul>
+          <li><a href="#principal">Inicio</a></li>
+          <li><a href="#articulos">Blog</a></li>
+          <li><a>Galería</a></li>
+          <li><a>Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Ejercicio 2: ID principal -->
+      <section id="principal">
+        <h2>Todo sobre el café de especialidad</h2>
+
+        <!-- Ejercicio 3: Conflicto de especificidad + Bonus inline -->
+        <p id="parrafo-vip" class="texto-especial" style="color: #ea580c">
+          El café de especialidad se evalúa con una puntuación mínima de 80
+          sobre 100 por catadores certificados, revisando aroma, acidez, cuerpo
+          y dulzor.
+        </p>
+        <p>
+          Descubrir el origen de cada grano nos conecta con las fincas y los
+          productores. Aquí hay un poco más de historia con
+          <span>texto especial</span> resaltado.
+        </p>
+
+        <div id="articulos">
+          <!-- Ejercicio 2: Clase destacado -->
+          <article class="destacado">
+            <h3>Origen e Historia del Café</h3>
+            <p>
+              El cultivo del café se remonta a las zonas altas de Etiopía. Con
+              los siglos, la bebida se expandió por todo el mundo convirtiéndose
+              en un ritual diario.
+            </p>
+
+            <!-- Ejercicio 5: src que termina en .png -->
+            <figure>
+              <img
+                src="cafe-verde.webp"
+                alt="Granos de café verde de especialidad"
+                width="250px"
+              />
+              <figcaption>
+                Granos de café verde antes del proceso de tueste artesanal.
+              </figcaption>
+            </figure>
+
+            <blockquote>
+              <p>
+                "El buen café empieza mucho antes de la taza: empieza con la
+                dedicación en la tierra."
+              </p>
+            </blockquote>
+
+            <p>
+              Posterior a la cita, este párrafo demuestra la selección del
+              hermano general (blockquote ~ p).
+            </p>
+          </article>
+
+          <article>
+            <h3>Métodos manuales de extracción</h3>
+            <p>
+              Cada método de extracción resalta notas sensoriales distintas del
+              grano:
+            </p>
+            <ul>
+              <li>V60 (Filtrado de papel con acidez limpia)</li>
+              <li>Chemex (Cuerpo ligero y claridad)</li>
+              <li>Prensa Francesa (Cuerpo completo y aceites naturales)</li>
+              <li>Espresso (Alta concentración e intensidad)</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Comparativa de Parámetros</h3>
+            <p>
+              A continuación se detallan las variables sugeridas para cada
+              método:
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Método</th>
+                  <th>Tiempo</th>
+                  <th>Perfil de Cuerpo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>V60</td>
+                  <td>3:00 min</td>
+                  <td>Ligero y brillante</td>
+                </tr>
+                <tr>
+                  <td>Chemex</td>
+                  <td>4:00 min</td>
+                  <td>Muy limpio</td>
+                </tr>
+                <tr>
+                  <td>Prensa Francesa</td>
+                  <td>4:00 min</td>
+                  <td>Denso y cremoso</td>
+                </tr>
+                <tr>
+                  <td>Espresso</td>
+                  <td>0:30 seg</td>
+                  <td>Intenso y concentrado</td>
+                </tr>
+                <tr>
+                  <td>AeroPress</td>
+                  <td>2:00 min</td>
+                  <td>Equilibrado</td>
+                </tr>
+                <tr>
+                  <td>Cold Brew</td>
+                  <td>18:00 hrs</td>
+                  <td>Dulce y de baja acidez</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </section>
+
+      <aside>
+        <h3>Enlaces relacionados</h3>
+        <!-- Ejercicio 5: href con https, tel y mailto -->
+        <ul>
+          <!-- Ejercicio 4: target="_blank" -->
+          <li>
+            <a href="https://sca.coffee" target="_blank"
+              >Specialty Coffee Association</a
+            >
+          </li>
+          <li><a href="tel:+525512345678">Atención telefónica</a></li>
+          <li>
+            <a href="mailto:contacto@cafedeespecialidad.com"
+              >Correo de contacto</a
+            >
+          </li>
+        </ul>
+
+        <h3>Etiquetas</h3>
+        <p>
+          <a>diseño</a>
+          <a>tutorial</a>
+          <!-- Ejercicio 4: class~="popular" -->
+          <a class="tag popular">css</a>
+          <a>html</a>
+        </p>
+      </aside>
+
+      <section id="contacto">
+        <h2>Formulario de contacto</h2>
+        <!-- Ejercicio 6: Tipos de input y atributos -->
+        <form>
+          <p>
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" placeholder="Tu nombre" />
+          </p>
+          <p>
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" placeholder="ejemplo@correo.com" />
+          </p>
+          <p>
+            <input type="checkbox" id="boletin" />
+            <label for="boletin">Suscribirme al boletín mensual de café</label>
+          </p>
+          <p>
+            <input type="radio" name="preferencia" id="opA" checked />
+            <label for="opA">Grano entero</label>
+            <input type="radio" name="preferencia" id="opB" />
+            <label for="opB">Café molido</label>
+          </p>
+          <p>
+            <label for="codigo">Código promocional (agotado):</label>
+            <input type="text" id="codigo" value="DESCUENTO2026" disabled />
+          </p>
+          <button type="button">Enviar mensaje</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>Sitio creado por: Uriel - Profesor introductorio de Web</p>
+      <ul>
+        <li><a href="#">Red social 1</a></li>
+        <li><a href="#">Red social 2</a></li>
+        <li>
+          <a href="#">Red social 3</a>
+          <!-- Bonus Ejercicio 8: Lista anidada para demostrar la diferencia entre descendiente e hijo directo -->
+          <ul>
+            <li><a href="#">Comunidad de Discord (Sub-enlace anidado)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </footer>
+  </body>
+</html>

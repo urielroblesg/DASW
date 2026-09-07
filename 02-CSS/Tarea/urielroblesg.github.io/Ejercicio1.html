@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 1 - Los 3 métodos de inclusión</title>
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    /* Estilo Interno */
+    h2 {
+      color: #1e3a8a;
+      background-color: #e0f2fe;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    /* Bonus Ejercicio 1:
+       No es buena práctica abusar del estilo inline porque rompe la separación de responsabilidades 
+       (mezcla contenido HTML con presentación CSS), dificulta el mantenimiento del código en proyectos 
+       grandes, no se puede reutilizar entre múltiples elementos y tiene la mayor especificidad, 
+       haciendo difícil sobreescribirlo desde una hoja de estilos externa. */
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- Inline: style en h1 -->
+    <h1 style="color: #0f172a; font-size: 2.2rem; font-family: sans-serif;">El Mundo del Café de Especialidad</h1>
+    
+    <!-- Párrafo explicativo solicitado en Ejercicio 1 -->
+    <p style="background-color: #fef3c7; padding: 10px; border-left: 4px solid #f59e0b;">
+      <strong>¿Cuál método es mejor para proyectos grandes?</strong> El método <em>externo</em> es indudablemente el mejor para proyectos grandes. Permite separar la estructura HTML de la presentación visual, facilita la reutilización de reglas en cientos de páginas mediante un solo archivo, mejora los tiempos de carga gracias al almacenamiento en caché del navegador y hace que el mantenimiento del código sea mucho más ordenado y eficiente.
+    </p>
+
+    <nav>
+      <ul>
+        <li><a>Inicio</a></li>
+        <li><a>Blog</a></li>
+        <li><a>Galería</a></li>
+        <li><a>Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Título de la sección principal</h2>
+      <p>Escribe aquí un párrafo introductorio sobre tu sitio.</p>
+      <p>Otro párrafo con <span>una parte de texto especial</span> dentro.</p>
+
+      <article>
+        <h3>Título del primer artículo</h3>
+        <p>Contenido del primer artículo. Escribe algo real, no lorem ipsum.</p>
+      </article>
+    </section>
+  </main>
+
+</body>
+</html>

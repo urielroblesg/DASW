@@ -144,3 +144,6 @@ vite.config.ts.timestamp-*
 
 # Configuración local del repo
 AGENTS.md
+
+# Repos anidados
+02-CSS/Tarea/urielroblesg.github.io/.git

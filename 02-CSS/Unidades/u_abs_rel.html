@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plantilla - Ejercicio de Unidades CSS</title>
+    <style>
+      /* ==========================================
+       1. CONFIGURACIÓN RAÍZ (html)
+       ========================================== */
+      html {
+        /* PASO 3: Define aquí el font-size base de la raíz (ej. 16px) */
+      }
+
+      /* ==========================================
+       ESTILOS BASE Y RESETS (NO MODIFICAR)
+       ========================================== */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f2f5;
+        color: #1c1e21;
+        padding: 30px 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      /* ==========================================
+       PASO 1: UNIDADES ABSOLUTAS (px)
+       Instrucciones:
+       - Define dimensiones rígidas para el contenedor.
+       - Asigna width: 320px, padding: 24px y font-size: 16px.
+       ========================================== */
+      .card-contenedor {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+        /* Escribe aquí tu width, padding y font-size en px */
+      }
+
+      .card-badge {
+        display: inline-block;
+        background-color: #e1f5fe;
+        color: #0288d1;
+        font-weight: bold;
+        border-radius: 4px;
+
+        /* PASO 2: Escribe padding interno en 'em' (ej. 0.4em 0.8em) */
+
+        /* PASO 3: Escribe font-size y margin-bottom en 'rem' (ej. 0.75rem) */
+      }
+
+      /* ==========================================
+       PASO 3: UNIDADES RELATIVAS A LA RAÍZ (rem)
+       Instrucciones:
+       - Configura fuentes y márgenes relativos a <html> (1rem = 16px).
+       ========================================== */
+      .card-titulo {
+        color: #0f172a;
+
+        /* Escribe aquí font-size (ej. 1.35rem) y margin-bottom (ej. 0.5rem) */
+      }
+
+      .card-subtitulo {
+        color: #64748b;
+
+        /* Escribe aquí font-size (ej. 0.9rem) y margin-bottom (ej. 1rem) */
+      }
+
+      /* ==========================================
+       PASO 2: UNIDADES RELATIVAS AL PADRE / ELEMENTO (em)
+       Instrucciones:
+       - Aplica 'em' en paddings o márgenes que deban escalar
+         proporcionalmente según el tamaño de fuente del elemento.
+       ========================================== */
+      .card-descripcion {
+        color: #334155;
+        line-height: 1.5;
+
+        /* Escribe aquí margin-bottom en 'em' (ej. 1.25em) y font-size en 'rem' (ej. 0.95rem) */
+      }
+
+      .btn-inscripcion {
+        display: block;
+        width: 100%;
+        background-color: #2563eb;
+        color: #ffffff;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 600;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+
+        /* Escribe aquí padding en 'em' (ej. 0.75em 1em) y font-size en 'rem' (ej. 1rem) */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- COMPONENTE REAL: Tarjeta de Curso -->
+    <article class="card-contenedor">
+      <span class="card-badge">CURSO PRÁCTICO</span>
+      <h2 class="card-titulo">Diseño Web con CSS Moderno</h2>
+      <h3 class="card-subtitulo">Unidades Absolutas y Relativas</h3>
+      <p class="card-descripcion">
+        Aprende a dominar el uso de <code>px</code>, <code>em</code> y
+        <code>rem</code> para crear componentes adaptables y escalables.
+      </p>
+      <button class="btn-inscripcion">Inscribirme al Curso</button>
+    </article>
+  </body>
+</html>

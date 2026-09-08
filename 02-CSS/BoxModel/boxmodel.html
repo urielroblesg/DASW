@@ -1,41 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plantilla - Ejercicio de CSS Box Model</title>
-  <style>
-    /* ==========================================
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plantilla - Ejercicio de CSS Box Model</title>
+    <style>
+      /* ==========================================
        ESTILOS BASE (NO MODIFICAR)
        ========================================== */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #eef2f5;
-      color: #1e293b;
-      padding: 40px 20px;
-    }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #eef2f5;
+        color: #1e293b;
+        padding: 40px 20px;
+      }
 
-    .seccion-ejercicio {
-      max-width: 800px;
-      margin: 0 auto 40px auto;
-      background: #ffffff;
-      padding: 24px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    }
+      .seccion-ejercicio {
+        max-width: 800px;
+        margin: 0 auto 40px auto;
+        background: #ffffff;
+        padding: 24px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
 
-    h2 {
-      margin-bottom: 12px;
-      color: #0f172a;
-    }
+      h2 {
+        margin-bottom: 12px;
+        color: #0f172a;
+      }
 
-    p.instruccion {
-      font-size: 0.95rem;
-      color: #64748b;
-      margin-bottom: 20px;
-    }
+      p.instruccion {
+        font-size: 0.95rem;
+        color: #64748b;
+        margin-bottom: 20px;
+      }
 
-    /* ==========================================
+      /* ==========================================
        BLOQUE 1: PROPIEDADES DEL BOX MODEL
        Instrucción:
        - Asigna un ancho (width) de 300px y alto (height) de 150px.
@@ -43,101 +43,110 @@
        - Añade un borde sólido (border) de 5px de color #2563eb.
        - Aplica un margen (margin) externo de 30px alrededor de la caja.
        ========================================== */
-    #caja-demo-1 {
-      background-color: #dbeafe;
+      #caja-demo-1 {
+        background-color: #dbeafe;
 
-      /* Escribe tus propiedades aquí: */
-      
-    }
+        /* Escribe tus propiedades aquí: */
+        width: 300px;
+        height: 150px;
+        padding: 20px;
+        border: 5px solid #2563eb;
+        margin: 30px;
+        box-sizing: border-box;
+      }
 
-    /* ==========================================
+      /* ==========================================
        BLOQUE 2: CONTROL DE ANCHO Y BOX-SIZING
        Instrucción:
        - Ambas cajas tienen width: 100% y padding: 25px con un border de 5px.
        - Observa cómo la caja #caja-content se desborda de su contenedor.
        - En #caja-border, aplica la propiedad box-sizing adecuada para corregir el desbordamiento.
        ========================================== */
-    .contenedor-padre {
-      width: 400px;
-      background-color: #f1f5f9;
-      border: 2px dashed #94a3b8;
-      padding: 10px;
-      margin-bottom: 20px;
-    }
+      .contenedor-padre {
+        width: 400px;
+        background-color: #f1f5f9;
+        border: 2px dashed #94a3b8;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
 
-    .caja-comparativa {
-      width: 100%;
-      padding: 25px;
-      border: 5px solid #059669;
-      background-color: #a7f3d0;
-      margin-bottom: 15px;
-    }
+      .caja-comparativa {
+        width: 100%;
+        padding: 25px;
+        border: 5px solid #059669;
+        background-color: #a7f3d0;
+        margin-bottom: 15px;
+      }
 
-    #caja-content {
-      /* Comportamiento por defecto: content-box */
-      box-sizing: content-box;
-    }
+      #caja-content {
+        /* Comportamiento por defecto: content-box */
+        box-sizing: content-box;
+      }
 
-    #caja-border {
-      /* Escribe aquí la propiedad box-sizing para corregir el ancho */
+      #caja-border {
+        /* Escribe aquí la propiedad box-sizing para corregir el ancho */
+        box-sizing: border-box;
+      }
 
-    }
-
-    /* ==========================================
+      /* ==========================================
        BLOQUE 3: CENTRADO CON MARGIN AUTO
        Instrucción:
        - Otorga a #tarjeta-centrada un width de 320px.
        - Utiliza la propiedad margin para centrar horizontalmente la tarjeta en la página.
        ========================================== */
-    #tarjeta-centrada {
-      background-color: #fef3c7;
-      border: 2px solid #d97706;
-      padding: 20px;
-      border-radius: 6px;
+      #tarjeta-centrada {
+        background-color: #fef3c7;
+        border: 2px solid #d97706;
+        padding: 20px;
+        border-radius: 6px;
+        width: 320px;
+        /* Escribe aquí tu código para definir el ancho y centrar */
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- BLOQUE 1 -->
+    <section class="seccion-ejercicio">
+      <h2>1. Partes del Box Model</h2>
+      <p class="instruccion">
+        Modifica la siguiente caja para añadirle dimensiones, padding, border y
+        margin.
+      </p>
 
-      /* Escribe aquí tu código para definir el ancho y centrar */
+      <div id="caja-demo-1">Contenido de la Caja 1</div>
+    </section>
 
-    }
-  </style>
-</head>
-<body>
+    <!-- BLOQUE 2 -->
+    <section class="seccion-ejercicio">
+      <h2>2. Comparativa: content-box vs. border-box</h2>
+      <p class="instruccion">
+        Observa cómo afecta el cálculo del tamaño total del elemento.
+      </p>
 
-  <!-- BLOQUE 1 -->
-  <section class="seccion-ejercicio">
-    <h2>1. Partes del Box Model</h2>
-    <p class="instruccion">Modifica la siguiente caja para añadirle dimensiones, padding, border y margin.</p>
-    
-    <div id="caja-demo-1">
-      Contenido de la Caja 1
-    </div>
-  </section>
+      <div class="contenedor-padre">
+        <div id="caja-content" class="caja-comparativa">
+          <strong>content-box:</strong> Se desborda del contenedor.
+        </div>
 
-  <!-- BLOQUE 2 -->
-  <section class="seccion-ejercicio">
-    <h2>2. Comparativa: content-box vs. border-box</h2>
-    <p class="instruccion">Observa cómo afecta el cálculo del tamaño total del elemento.</p>
-    
-    <div class="contenedor-padre">
-      <div id="caja-content" class="caja-comparativa">
-        <strong>content-box:</strong> Se desborda del contenedor.
+        <div id="caja-border" class="caja-comparativa">
+          <strong>border-box:</strong> Respeta el 100% del contenedor.
+        </div>
       </div>
+    </section>
 
-      <div id="caja-border" class="caja-comparativa">
-        <strong>border-box:</strong> Respeta el 100% del contenedor.
+    <!-- BLOQUE 3 -->
+    <section class="seccion-ejercicio">
+      <h2>3. Centrado Horizontal con Margin Auto</h2>
+      <p class="instruccion">
+        Centra la siguiente tarjeta usando un ancho definido y margen
+        automático.
+      </p>
+
+      <div id="tarjeta-centrada">
+        <h3>Tarjeta Centrada</h3>
+        <p>Este bloque debe quedar centrado en medio de la sección.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- BLOQUE 3 -->
-  <section class="seccion-ejercicio">
-    <h2>3. Centrado Horizontal con Margin Auto</h2>
-    <p class="instruccion">Centra la siguiente tarjeta usando un ancho definido y margen automático.</p>
-    
-    <div id="tarjeta-centrada">
-      <h3>Tarjeta Centrada</h3>
-      <p>Este bloque debe quedar centrado en medio de la sección.</p>
-    </div>
-  </section>
-
-</body>
+    </section>
+  </body>
 </html>

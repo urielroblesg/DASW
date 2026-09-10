@@ -1,0 +1,43 @@
+#catalogo-principal{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#menu-categorias {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#ofertas-relampago {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#barra-beneficios{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#zona-promociones {
+    display: flex;
+    align-items: baseline;
+}
+
+#escaparate-adaptable {
+    display: flex;
+}
+
+#producto-base {
+    flex-grow: 1;
+}
+
+#producto-grow {
+    flex-grow: 2;
+}
+
+#producto-shrink {
+    flex-grow: 3;
+}

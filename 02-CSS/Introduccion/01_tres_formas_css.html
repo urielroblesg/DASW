@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tres Formas de CSS</title>
+    <!-- MÉTODO 3: CSS EXTERNO (descomenta cuando lo uses) -->
+    <link rel="stylesheet" href="./styles/estilos1.css" />
+    <!-- MÉTODO 2: CSS INTERNO -->
+    <style>
+      .parrafo-interno {
+        color: #27ae60;
+        background-color: #d5f4e6;
+        padding: 15px;
+        border-radius: 5px;
+        border-left: 5px solid #1512d1;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎨 Las 3 Formas de Agregar CSS</h1>
+    <!-- MÉTODO 1: CSS INLINE -->
+    <h2>Método 1: Inline</h2>
+    <p
+      style="
+        color: #27ae60;
+        background-color: #d5f4e6;
+        padding: 15px;
+        border-radius: 5px;
+        border-left: 5px solid #27ae60;
+      "
+    >
+      Este párrafo usa CSS inline. Cámbialo a tu gusto.
+    </p>
+    <!-- MÉTODO 2: CSS INTERNO -->
+    <h2>Método 2: Interno</h2>
+    <p class="parrafo-interno">
+      Este párrafo usa CSS interno. Agrega estilos a .parrafo-interno en la
+      etiqueta style.
+    </p>
+    <!-- MÉTODO 3: CSS EXTERNO -->
+    <h2>Método 3: Externo</h2>
+    <p class="parrafo-externo">
+      Este párrafo usa CSS externo. Crea un archivo estilos1.css y enlázalo
+      arriba.
+    </p>
+    <hr />
+    <p>© 2024</p>
+  </body>
+</html>

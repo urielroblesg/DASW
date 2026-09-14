@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <!-- head: configuración de la página (no se ve en pantalla) -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal de peliculas</title>
+  </head>
+  <body>
+    <h1>Portal de peliculas</h1>
+
+    <h2>Pelicula Destacada</h2>
+
+    <!-- img: imagen. src = ruta relativa al archivo,
+         alt = texto si la imagen no carga (accesibilidad),
+         width/height = tamaño en píxeles -->
+    <img
+      src="../../sherk.jpg"
+      alt="Caratula pelicula destacada - Sherk"
+      width="250"
+      height="300"
+    />
+
+    <h2>Enlaces utiles</h2>
+    <!-- a: enlace. target="_blank" abre en nueva pestaña,
+         href="#contacto" salta al elemento con id="contacto" (ancla interna) -->
+    <ul>
+      <li><a href="https://www.imdb.com" target="_blank">Ir IMDb</a></li>
+      <li>
+        <a href="https://www.rottentomatoes.com" target="_blank"
+          >Ir RottenTomatoes</a
+        >
+      </li>
+      <li><a href="#contacto">Ir a contactos</a></li>
+    </ul>
+    <h2>Peliculas</h2>
+    <!-- table: tabla. border dibuja los bordes.
+         thead = encabezados, tbody = datos, tr = fila, th = celda de título -->
+    <table border="1">
+      <thead>
+        <tr>
+          <!-- colspan="4": esta celda abarca 4 columnas -->
+          <th colspan="4">Top 3 peliculas</th>
+        </tr>
+        <tr>
+          <th>Titulo</th>
+          <th>Género</th>
+          <th>Año</th>
+          <th>Calificación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <!-- td: celda de dato normal -->
+          <td>Batman: El caballero de la noche asciende</td>
+          <td>Accion/Superheroes</td>
+          <!-- rowspan="4": esta celda abarca 4 filas -->
+          <td rowspan="4">2001-2026</td>
+          <td>9.4/10</td>
+        </tr>
+        <tr>
+          <td>Inception</td>
+          <td>Drama/Suspenso</td>
+          <td>8.6/10</td>
+        </tr>
+        <tr>
+          <td>Sherk</td>
+          <td rowspan="2">Animacion/Comedia</td>
+          <td>10/10</td>
+        </tr>
+        <tr>
+          <td>Sherk2</td>
+          <td>10/10</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- div: contenedor genérico. id="contacto" es el destino del enlace ancla -->
+    <div id="contacto">
+      <h2>Contacto</h2>
+      <!-- form: formulario. method = cómo se envía,
+           action = a dónde (mailto: lo envía por correo electrónico) -->
+      <form
+        method="post"
+        action="mailto:uriel.robles@iteso.mx?cc=otro@iteso.mx&subject=Contacto"
+      >
+        <!-- label: etiqueta de texto; for apunta al id del input asociado -->
+        <label for="nombre">Nombre:</label>
+        <!-- input type="text": campo de texto de una línea -->
+        <input type="text" name="nombre" id="nombre"/>
+        <br />
+        <label for="email">Email:</label>
+        <!-- type="email" valida que sea un correo; required: campo obligatorio -->
+        <input type="email" name="email" id="email" required />
+
+        <br />
+        <!-- select + option: lista desplegable de opciones -->
+        <label for="region">Selecciona tu región</label>
+        <select name="region" id="region">
+          <option value="Jalisco">Jalisco</option>
+          <option value="Michoacan">Michoacan</option>
+          <option value="Nayarit">Nayarit</option>
+        </select>
+
+        <br />
+        <br />
+        <!-- textarea: campo de texto multilínea (rows = alto, cols = ancho) -->
+        <label for="comentario">Comentario:</label>
+        <br />
+        <textarea
+          name="comentario"
+          id="comentario"
+          rows="5"
+          cols="40"
+          required
+        ></textarea>
+        <br />
+        <!-- button type="submit": envía el formulario -->
+        <button type="submit">Contactar</button>
+      </form>
+    </div>
+  </body>
+</html>

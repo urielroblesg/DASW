@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Selectores Combinadores</title>
+    <style>
+      /*
+        * #e74c3c
+        * #667eea
+        * #e8f5e9
+        * #2c3e50
+        */
+
+      /* Escribe combinadores para: 
+      1. Todos los 'span' dentro del contenedor (Descendiente) 
+      2. Solo los párrafos hijos directos del div.contenedor (Hijo directo) 
+      3. El párrafo inmediatamente posterior al h2 (Hermano adyacente) 
+      4. Todos los párrafos hermanos que siguen al h2 (Hermano general) */
+      .contenedor span {
+        color: red;
+        font-weight: bold;
+      }
+
+      .contenedor > p {
+        border-left: 3px solid #667eea;
+        padding-left: 10px;
+      }
+
+      h2 + p {
+        background-color: #e8e8e8;
+        padding: 8px;
+        font-size: 1.2em;
+      }
+
+      h2 ~ p {
+        color: #2c3e50;
+      }
+      
+      h2 ~ p:hover {
+        transform: scale(1.2);
+        transition: 500ms ease;
+      }
+      /* 
+      div.input > label {
+        background-color: red;
+      }
+      div.input > label + input:hover {
+        background-color: red;
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="contenedor">
+      <h2>Título de la Sección</h2>
+      <p>Primer párrafo (Hermano inmediato de h2 y hijo directo de div).</p>
+      <p>Segundo párrafo con un <span>span interno</span>.</p>
+      <div class="sub-caja">
+        <p>
+          Párrafo anidado dentro de sub-caja (NO es hijo directo de
+          div.contenedor).
+        </p>
+        <span>Otro span en sub-caja</span>
+      </div>
+    </div>
+    <!-- 
+    <form action="">
+      <div class="input">
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" id="nombre" />
+      </div>
+      <div class="input">
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email" />
+      </div>
+      <div class="input">
+        <label for="nombre">Password: </label>
+        <input type="password" name="password" id="password" />
+      </div>
+    </form> -->
+  </body>
+</html>

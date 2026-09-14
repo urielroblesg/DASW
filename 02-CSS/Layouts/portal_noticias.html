@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plantilla de Clase - DevLog: Portal de Noticias Tech</title>
+    <style>
+      /* ==========================================
+       ESTILOS GENERALES Y BASE (NO MODIFICAR)
+       ========================================== */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f2f5;
+        color: #1c1e21;
+        padding-bottom: 60px;
+      }
+
+      .header-principal {
+        background-color: #1a202c;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .header-principal h1 {
+        font-size: 1.8rem;
+      }
+      .header-principal p {
+        color: #a0aec0;
+        font-size: 0.95rem;
+      }
+
+      .seccion-demo {
+        max-width: 1000px;
+        margin: 0 auto 40px auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+      .seccion-demo h2 {
+        font-size: 1.3rem;
+        color: #2b6cb0;
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 4px 8px;
+        background-color: #e2e8f0;
+        color: #4a5568;
+        font-size: 0.75rem;
+        font-weight: bold;
+        border-radius: 4px;
+        text-transform: uppercase;
+      }
+      .badge-destacado {
+        background-color: #e53e3e;
+        color: #ffffff;
+      }
+
+      .card-articulo {
+        background: #f7fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        padding: 15px;
+      }
+      .card-articulo h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+        color: #2d3748;
+      }
+      .card-articulo p {
+        font-size: 0.9rem;
+        color: #718096;
+        line-height: 1.4;
+      }
+
+      /* ==========================================
+       BLOQUE 1: COMPORTAMIENTO DEL FLUJO Y FLOAT
+       ========================================== */
+      /* INSTRUCCIONES:
+       - Modifica .badge-autor para que se comporte como inline-block y acepte márgenes.
+       - Aplica float a .avatar-autor para que la biografía fluya alrededor de la imagen.
+    */
+      .perfil-autor {
+        background-color: #edf2f7;
+        padding: 15px;
+        border-radius: 6px;
+      }
+      .avatar-autor {
+        width: 70px;
+        height: 70px;
+        background-color: #3182ce;
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 70px;
+        font-weight: bold;
+        /* Paso 1.2: Aplicar float a la izquierda aquí */
+        float: left;
+      }
+      .badge-autor {
+        /* Paso 1.1: Cambiar comportamiento de display a inline-block */
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 5px;
+      }
+
+      /* ==========================================
+       BLOQUE 2: PROPIEDAD POSITION
+       ========================================== */
+      /* INSTRUCCIONES:
+       - Configura .contenedor-card-noticia con position: relative para crear el contexto.
+       - Posiciona .badge-flotante de forma absoluta en la esquina superior derecha.
+    */
+      .contenedor-card-noticia {
+        background: #edf2f7;
+        padding: 20px;
+        border-radius: 6px;
+        /* Paso 2.1: Establecer el contexto de posicionamiento */
+        position: relative;
+      }
+      .badge-flotante {
+        /* Paso 2.2: Posicionar de forma absoluta (top, right) */
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      /* ==========================================
+       BLOQUE 3: FLEXBOX CONTENEDOR (FLEX CONTAINER)
+       ========================================== */
+      /* INSTRUCCIONES:
+       - Convierte .nav-blog en contenedor flexible y distribuye sus elementos horizontalmente.
+       - Convierte .galeria-grid en contenedor flex con wrap y distribución space-between.
+    */
+      .nav-blog {
+        background-color: #2d3748;
+        padding: 12px 20px;
+        border-radius: 6px;
+        /* Paso 3.1: Configurar display flex y alineación (justify-content, align-items) */
+      }
+      .nav-blog a {
+        color: #edf2f7;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .galeria-grid {
+        margin-top: 20px;
+        /* Paso 3.2: Activar display flex, flex-wrap y justify-content */
+      }
+      .galeria-grid .card-articulo {
+        width: 30%;
+        min-width: 250px;
+        margin-bottom: 15px;
+      }
+
+      /* ==========================================
+       BLOQUE 4: FLEXBOX PROPIEDADES DE LOS HIJOS (FLEX ITEMS)
+       ========================================== */
+      /* INSTRUCCIONES:
+       - Configura .layout-boletin con display: flex.
+       - Controla la proporción de espacio usando flex-grow en los elementos hijos.
+    */
+      .layout-boletin {
+        display: flex;
+        gap: 15px;
+      }
+      .contenido-principal {
+        background-color: #ebf8ff;
+        padding: 15px;
+        border-radius: 6px;
+        /* Paso 4.1: Configurar flex-grow: 3 */
+      }
+      .lateral-promocional {
+        background-color: #feebc8;
+        padding: 15px;
+        border-radius: 6px;
+        /* Paso 4.2: Configurar flex-grow: 1 */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header-principal">
+      <h1>DevLog — Portal de Noticias Tech</h1>
+      <p>
+        Plantilla de Clase: Maquetación con CSS Flujo, Posicionamiento y Flexbox
+      </p>
+    </header>
+
+    <!-- BLOQUE 1 -->
+    <section class="seccion-demo">
+      <h2>1. Flujo de Texto y Perfil de Autor (Display y Float)</h2>
+      <div class="perfil-autor">
+        <div class="avatar-autor">CR</div>
+        <div>
+          <span class="badge badge-autor">Autor Senior</span>
+          <span class="badge badge-autor">Tech Lead</span>
+          <h3>Carlos Rodríguez</h3>
+          <p>
+            Desarrollador Full Stack con más de 8 años de experiencia en
+            arquitectura web. Apasionado por CSS moderno, accesibilidad web y el
+            rendimiento en el navegador.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOQUE 2 -->
+    <section class="seccion-demo">
+      <h2>2. Tarjeta con Etiqueta Flotante (Position Relative / Absolute)</h2>
+      <div class="contenedor-card-noticia">
+        <span class="badge badge-destacado badge-flotante">¡NUEVO!</span>
+        <h3>Lanzamiento de CSS Grid Subgrid en Navegadores Modernos</h3>
+        <p>
+          Descubre cómo la nueva especificación de CSS nos permite alinear
+          elementos dentro de contenedores anidados sin romper el flujo de
+          diseño.
+        </p>
+      </div>
+    </section>
+
+    <!-- BLOQUE 3 -->
+    <section class="seccion-demo">
+      <h2>3. Barra de Navegación y Galería de Artículos (Flex Container)</h2>
+      <nav class="nav-blog">
+        <div style="font-weight: bold; color: #fff">DevLog.io</div>
+        <div>
+          <a href="#" style="margin-right: 15px">Artículos</a>
+          <a href="#" style="margin-right: 15px">Tutoriales</a>
+          <a href="#">Contacto</a>
+        </div>
+      </nav>
+
+      <div class="galeria-grid">
+        <article class="card-articulo">
+          <h3>Optimizando Flexbox</h3>
+          <p>Consejos para evitar reflows pesados en el renderizado.</p>
+        </article>
+        <article class="card-articulo">
+          <h3>Variables CSS en 2026</h3>
+          <p>Cómo estructurar temas oscuros y claros con tokens.</p>
+        </article>
+        <article class="card-articulo">
+          <h3>Guía de Position Sticky</h3>
+          <p>Casos prácticos para encabezados y barras laterales.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- BLOQUE 4 -->
+    <section class="seccion-demo">
+      <h2>4. Layout de Contenido Flexible (Flex Items: grow, shrink, basis)</h2>
+      <div class="layout-boletin">
+        <main class="contenido-principal">
+          <h3>Artículo Principal: El Futuro del Web Development</h3>
+          <p>
+            El ecosistema de desarrollo web avanza rápidamente. Con la llegada
+            de nuevos estándares de CSS y APIs del navegador, maquetar layouts
+            complejos es más intuitivo que nunca...
+          </p>
+        </main>
+        <aside class="lateral-promocional">
+          <h3>Boletín Semanal</h3>
+          <p>Suscríbete para recibir noticias exclusivas.</p>
+        </aside>
+      </div>
+    </section>
+  </body>
+</html>

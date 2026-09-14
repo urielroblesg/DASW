@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pseudoclase :not()</title>
+    <style>
+      p:not(.advertencia) {
+        color: blueviolet;
+      }
+
+      p.advertencia {
+        color: red;
+      }
+
+      button:not(:disabled) {
+        cursor: pointer;
+        background-color: rgb(50, 50, 100);
+        color: white;
+        border: none;
+        border-radius: 6px;
+      }
+
+      button:not(:disabled):hover {
+        background-color: rgb(118, 118, 204);
+      }
+      
+    </style>
+  </head>
+  <body>
+    <h1>Artículos</h1>
+    <article>
+      <p>Párrafo normal 1</p>
+      <p class="advertencia">⚠️ Este es una advertencia</p>
+      <p>Párrafo normal 2</p>
+    </article>
+    <article>
+      <p>Párrafo normal 3</p>
+      <p class="advertencia">⚠️ Otra advertencia</p>
+    </article>
+
+    <article>
+      <button>Boton habilitado</button>
+      <button disabled>Boton deshabilitado</button>
+    </article>
+  </body>
+</html>

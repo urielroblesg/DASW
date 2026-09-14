@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafio integrador</title>
+  </head>
+  <body>
+    <!--
+    
+    - Input text: foco azul, hover gris claro
+    - Input email: tipo email, mismo estilo que text
+    - Input password: tipo password, mismo estilo
+    - Checkbox y radio: estilos personalizados
+    - Botón enviar: hover con sombra, active presionado
+    - Botón reset: deshabilitado por defecto, estilos grises
+    - Primera label: negrita (usa :first-child)
+    - Última label: cursiva (usa :last-child)
+    - Labels pares: fondo claro (usa :nth-child(even))
+    - Inputs deshabilitados: color gris, cursor no-allowed
+    - Todas las transiciones suaves (0.3s)
+    -->
+
+    <form>
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required />
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+      </div>
+      <div>
+        <label for="pass">Contraseña:</label>
+        <input type="password" id="pass" required />
+      </div>
+      <div>
+        <label><input type="checkbox" /> Recuérdame</label>
+      </div>
+      <div>
+        <button type="submit">Enviar</button>
+        <button type="reset" disabled>Reset</button>
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pseudoclases Estructura</title>
+    <style>
+      /* 
+      
+      Colores
+      Gris obscuro: #2c3e50
+      Rolo: #e74c3c
+      #ecf0f1 
+      Azul: #667eea
+      Blanco: #f5f5f5
+      Morado: #667eea
+      Verde: #27ae60
+      #e3f2fd
+      */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      td,
+      th {
+        padding: 12px;
+        text-align: left;
+      } /* Lista de items */
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        padding: 10px;
+        margin: 5px 0;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+      }
+      /* Estiliza: 
+      - Primera fila: fondo gris 
+      - Última fila: borde rojo 
+      - Filas pares: fondo claro 
+      - Filas impares: fondo blanco 
+      - Cada 3ª fila: negrita */
+
+      tr:first-child {
+        background-color: #2c3e50;
+        color: white;
+        font-weight: bold;
+      }
+
+      tr:last-child {
+        font-style: italic;
+      }
+
+      tr:nth-child(even) {
+        background-color: #e74c3c;
+      }
+
+      tr:nth-child(odd):not(tr:first-child) {
+        background-color: #ecf0f1 ;
+      }
+
+      tr:nth-child(3n) {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tabla de Productos</h1>
+    <table border="1">
+      <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+      </tr>
+      <tr>
+        <td>Producto 1</td>
+        <td>$10</td>
+      </tr>
+      <tr>
+        <td>Producto 2</td>
+        <td>$20</td>
+      </tr>
+      <tr>
+        <td>Producto 3</td>
+        <td>$30</td>
+      </tr>
+      <tr>
+        <td>Producto 4</td>
+        <td>$40</td>
+      </tr>
+      <tr>
+        <td>Producto 5</td>
+        <td>$50</td>
+      </tr>
+    </table>
+    <h2>Lista de Items</h2>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 4</li>
+      <li>Item 5</li>
+    </ul>
+  </body>
+</html>

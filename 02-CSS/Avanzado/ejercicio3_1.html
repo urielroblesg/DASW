@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pseudoclases UI</title>
+    <style>
+      button {
+        background-color: #667eea;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      input {
+        padding: 8px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        margin: 10px 0;
+      }
+      a {
+        color: #667eea;
+        text-decoration: none;
+      }
+      /* Estiliza botones con: - Hover: cambiar color y sombra - Active: efecto presionado - Inputs con focus: borde azul - Inputs deshabilitados: gris */
+
+      button:hover {
+        background-color: #5568d3;
+        box-shadow: 0 4px 8px rgba(102, 126, 234, 1);
+        transform: translateY(-2px);
+      }
+
+      button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+      }
+
+      button:disabled {
+        background-color: #bdc3c7;
+        transform: none;
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+
+      button:disabled:hover {
+        background-color: #bdc3c7;
+        transform: none;
+        color: black;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #667eea;
+        background-color: #f0f4ff;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, .1);
+        transform: scale(1.05);
+        transition: 500ms ease-in;
+      }
+
+      input:disabled {
+        background-color: #bdc3c7;
+        outline: none;
+        cursor: not-allowed;
+      }
+      a:visited {
+        color: #bdc3c7;
+        
+      }
+      a:hover {
+        text-decoration: underline;
+        color: #5568d3;
+      }
+
+      a:active {
+        color: #3d4ab8;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Estados de Interacción</h1>
+    <button>Botón Normal</button> <button disabled>Botón Deshabilitado</button>
+    <input type="text" placeholder="Ingresa algo" />
+    <input type="email" placeholder="Email" />
+    <input type="text" disabled placeholder="Deshabilitado" />
+    <br />
+    <a href="#">Enlace de prueba</a>
+  </body>
+</html>

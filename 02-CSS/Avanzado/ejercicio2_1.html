@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Selectores de Atributos</title>
+    <style>
+      /* 
+      Colores
+      Verde:  #27ae60; 
+      Rojo::after #e74c3c
+      Gris: #ecf0f1*/
+      /* Escribe selectores para: 1. Enlaces que empiezan con https 2. Inputs de tipo email 3. Enlaces que terminan con .pdf 4. Inputs deshabilitados 5. Elementos con data-importante */
+
+      input[disabled] {
+        background-color: #ecf0f1;
+        border: none;
+        padding: 6px;
+        cursor: not-allowed;
+      }
+
+      input[type="email"] {
+        border-radius: 2px solid #ecf0f1;
+        padding: 8px;
+      }
+
+      [data-importante="si"] {
+        background-color: #fff3cd;
+        border-left: 4px solid #f39c12;
+        padding: 10px;
+      }
+
+      [placeholder~="nombre"] {
+        background: cadetblue;
+        border: none;
+        padding: 10px;
+        border-radius: 6px;
+      }
+
+      a[href^="https"] {
+        color: #27ae60;
+        font-weight: bold;
+      }
+
+      a[href$=".jpg"] {
+        color: #e74c3c;
+        text-decoration: none;
+      }
+
+      a[href*="google"] {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Enlaces y Formularios</h1>
+    <!-- Enlaces -->
+    <a href="https://google.com">Google (HTTPS)</a><br />
+    <a href="http://ejemplo-google.com">Ejemplo (HTTP)</a><br />
+    <a href="documento.pdf">Descargar PDF</a><br />
+    <a href="imagen.jpg">Ver Imagen</a><br />
+
+    <br />
+    <!-- Formulario -->
+    <form>
+      <input type="email" placeholder="Tu email" required />
+      <input type="text" placeholder="Tu nombre escribelo aqui" />
+      <input type="email" disabled placeholder="Email deshabilitado" />
+      <input type="password" placeholder="Contraseña" />
+    </form>
+    <!-- Elementos con data -->
+    <div data-importante="si">Elemento importante</div>
+    <div>Elemento normal</div>
+  </body>
+</html>

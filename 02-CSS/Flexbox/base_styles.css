@@ -1,0 +1,585 @@
+/* =========================================================
+   FLEXSHOP - CSS BASE
+   IMPORTANTE:
+   Este archivo NO contiene propiedades de Flexbox.
+   La distribución Flexbox se agregará progresivamente en clase.
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(124, 58, 237, 0.10), transparent 28%),
+    radial-gradient(circle at 90% 10%, rgba(37, 99, 235, 0.08), transparent 25%),
+    #f4f6fb;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+  padding: 20px 5%;
+  background:
+    linear-gradient(135deg, #111827 0%, #1e1b4b 55%, #312e81 100%);
+  color: white;
+  border-bottom: 4px solid #8b5cf6;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+}
+
+.brand {
+  margin-bottom: 18px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.brand-icon {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 34px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+.brand h1 {
+  margin: 4px 0 0;
+  font-size: 24px;
+}
+
+.brand p {
+  margin: 2px 0 0;
+  color: #cbd5e1;
+}
+
+.header-actions button {
+  margin-right: 8px;
+}
+
+
+/* =========================================================
+   CONTENEDOR GENERAL
+   ========================================================= */
+
+.page-container {
+  width: 92%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 42px 0 80px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 42px;
+  margin-bottom: 34px;
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, #ede9fe 0%, #dbeafe 55%, #f0f9ff 100%);
+  border: 1px solid #c4b5fd;
+  box-shadow: 0 16px 35px rgba(76, 29, 149, 0.10);
+}
+
+.hero h2 {
+  margin: 10px 0 12px;
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.hero p {
+  max-width: 760px;
+  margin-bottom: 0;
+  color: #475569;
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #7c3aed;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   SECCIONES DE CLASE
+   ========================================================= */
+
+.lesson-section {
+  margin: 30px 0;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+}
+
+.lesson-heading {
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.step-number {
+  display: inline-block;
+  min-width: 52px;
+  padding: 9px 12px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #111827, #4c1d95);
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 6px 14px rgba(76, 29, 149, 0.20);
+}
+
+.lesson-tag {
+  margin: 0;
+  color: #7c3aed;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.lesson-heading h2 {
+  margin: 2px 0 0;
+}
+
+.teacher-note {
+  padding: 14px 16px;
+  margin: 16px 0 22px;
+  background: #fff7ed;
+  border-left: 5px solid #f59e0b;
+  border-radius: 8px;
+  color: #78350f;
+}
+
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.btn {
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 9px;
+  font-weight: bold;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: white;
+  box-shadow: 0 5px 12px rgba(109, 40, 217, 0.20);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+
+/* =========================================================
+   ETAPA 1 - PRODUCTOS
+   ========================================================= */
+
+.product-shelf {
+  padding: 18px;
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+}
+
+.product-card {
+  position: relative;
+  padding: 22px;
+  margin: 12px;
+  min-height: 310px;
+  background: linear-gradient(180deg, #ffffff, #fafbff);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #ede9fe;
+  color: #6d28d9;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+}
+
+.product-icon {
+  width: 76px;
+  height: 76px;
+  padding-top: 12px;
+  margin: 18px 0 12px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f3e8ff, #dbeafe);
+  text-align: center;
+  font-size: 42px;
+  box-shadow: inset 0 0 0 1px rgba(124, 58, 237, 0.08);
+}
+
+.product-category {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.product-card h3,
+.recommended-card h3 {
+  margin: 6px 0;
+}
+
+.product-description,
+.recommended-card p {
+  color: #64748b;
+}
+
+.product-footer {
+  margin-top: 20px;
+}
+
+.price {
+  display: block;
+  margin-bottom: 10px;
+  color: #111827;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   ETAPA 2 - CATEGORÍAS
+   ========================================================= */
+
+.category-menu {
+  padding: 16px;
+  background: linear-gradient(135deg, #111827, #1e1b4b);
+  border-radius: 14px;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.14);
+}
+
+.category-menu a {
+  display: block;
+  padding: 12px 15px;
+  margin: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 9px;
+  background: #1f2937;
+  color: white;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.category-menu a:hover {
+  background: #374151;
+}
+
+
+/* =========================================================
+   ETAPA 3 - OFERTAS RELÁMPAGO
+   ========================================================= */
+
+.flash-sale {
+  padding: 16px;
+  background: #fef2f2;
+  border: 2px dashed #fca5a5;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.mini-product {
+  width: 190px;
+  padding: 18px;
+  margin: 8px;
+  background: linear-gradient(180deg, #ffffff, #fff7f7);
+  border: 1px solid #fecaca;
+  border-radius: 14px;
+  box-shadow: 0 6px 15px rgba(127, 29, 29, 0.06);
+}
+
+.mini-product span {
+  font-size: 30px;
+}
+
+.mini-product h3 {
+  margin: 8px 0 4px;
+}
+
+.mini-product p {
+  margin: 0;
+  color: #dc2626;
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   ETAPA 4 - BENEFICIOS
+   ========================================================= */
+
+.benefits-bar {
+  min-height: 150px;
+  padding: 18px;
+  background: #ecfeff;
+  border: 2px dashed #67e8f9;
+  border-radius: 12px;
+}
+
+.benefit {
+  width: 220px;
+  padding: 16px;
+  margin: 8px;
+  background: linear-gradient(180deg, #ffffff, #f0fdff);
+  border: 1px solid #a5f3fc;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(8, 145, 178, 0.06);
+}
+
+.benefit span {
+  margin-right: 6px;
+  font-size: 24px;
+}
+
+
+/* =========================================================
+   ETAPA 5 - PROMOCIONES
+   ========================================================= */
+
+.promo-zone {
+  min-height: 340px;
+  padding: 18px;
+  background: #f0fdf4;
+  border: 2px dashed #86efac;
+  border-radius: 12px;
+}
+
+.promo-card {
+  width: 240px;
+  padding: 20px;
+  margin: 10px;
+  background: linear-gradient(180deg, #ffffff, #f7fff9);
+  border: 1px solid #bbf7d0;
+  border-radius: 14px;
+  box-shadow: 0 7px 16px rgba(21, 128, 61, 0.06);
+}
+
+.promo-card > span {
+  font-size: 32px;
+}
+
+.promo-small {
+  min-height: 140px;
+}
+
+.promo-medium {
+  min-height: 210px;
+}
+
+.promo-tall {
+  min-height: 290px;
+}
+
+
+/* =========================================================
+   ETAPA 6 - FLEX ITEMS
+   ========================================================= */
+
+.adaptive-showcase {
+  padding: 18px;
+  background: #eff6ff;
+  border: 2px dashed #93c5fd;
+  border-radius: 12px;
+}
+
+.adaptive-item {
+  padding: 20px;
+  margin: 10px;
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  border: 1px solid #bfdbfe;
+  border-radius: 14px;
+  box-shadow: 0 7px 16px rgba(30, 64, 175, 0.06);
+}
+
+.showcase-number {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  padding-top: 5px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.item-featured {
+  border-width: 3px;
+}
+
+.item-protected {
+  background: #f8fafc;
+}
+
+
+/* =========================================================
+   RETO PARA LOS ALUMNOS
+   ========================================================= */
+
+.student-challenge {
+  margin-top: 48px;
+  padding: 32px;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(124, 58, 237, 0.25), transparent 30%),
+    linear-gradient(135deg, #111827, #1e1b4b);
+  color: white;
+  border-radius: 20px;
+  border: 1px solid rgba(139, 92, 246, 0.28);
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.20);
+}
+
+.challenge-label {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: #f59e0b;
+  color: #111827;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.challenge-header h2 {
+  margin: 12px 0 8px;
+}
+
+.challenge-header p {
+  max-width: 760px;
+  color: #cbd5e1;
+}
+
+.recommended-grid {
+  margin-top: 24px;
+  padding: 18px;
+  background: #1f2937;
+  border: 2px dashed #64748b;
+  border-radius: 14px;
+}
+
+.recommended-card {
+  padding: 20px;
+  margin: 10px;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  color: #111827;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 7px 16px rgba(0, 0, 0, 0.10);
+}
+
+#recomendado-destacado {
+  border: 3px solid #f59e0b;
+}
+
+#recomendado-protegido {
+  border: 3px solid #38bdf8;
+}
+
+.challenge-checklist {
+  padding: 20px;
+  margin-top: 24px;
+  background: rgba(31, 41, 55, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 14px;
+}
+
+.challenge-checklist h3 {
+  margin-top: 0;
+}
+
+.challenge-checklist label {
+  display: block;
+  margin: 10px 0;
+  color: #e2e8f0;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+  padding: 32px;
+  background: #0b1120;
+  color: #94a3b8;
+  text-align: center;
+  border-top: 1px solid #1e293b;
+}
+
+
+/* =========================================================
+   MICROINTERACCIONES VISUALES
+   No utilizan Flexbox.
+   ========================================================= */
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(109, 40, 217, 0.25);
+}
+
+.category-menu a:hover {
+  transform: translateX(3px);
+}
+
+.product-card:hover,
+.mini-product:hover,
+.promo-card:hover,
+.adaptive-item:hover,
+.recommended-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.10);
+}
+
+.hero::after {
+  content: "CSS";
+  position: absolute;
+  right: 32px;
+  bottom: -18px;
+  font-size: 110px;
+  font-weight: 900;
+  color: rgba(124, 58, 237, 0.07);
+  pointer-events: none;
+}
+
+
+

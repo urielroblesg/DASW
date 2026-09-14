@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 1.2 - Especificidad</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <style>
+    </style>
+  </head>
+  <body>
+    <div class="ejercicio-block">
+      <span class="numero-ejercicio">Ejercicio 1.2</span>
+      <h3>Cálculo de Especificidad</h3>
+
+      <div class="objetivo">
+        <strong>Objetivo:</strong> Dominar el cálculo de especificidad y
+        entender qué selector gana.
+      </div>
+
+      <div class="instrucciones">
+        <strong>Fórmula de Especificidad:</strong> (IDs, Clases, Elementos)
+        <br /><br />
+        <table>
+          <tr>
+            <th>Selector</th>
+            <th>Ejemplo</th>
+            <th>IDs</th>
+            <th>Clases</th>
+            <th>Elementos</th>
+            <th>Especificidad Total</th>
+          </tr>
+          <tr data-usuario="isc gdl m happy">
+            <td>Elemento</td>
+            <td><span class="codigo-inline">p</span></td>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+            <td><strong>(0,0,1)</strong></td>
+          </tr>
+          <tr>
+            <td>Clase</td>
+            <td><span class="codigo-inline">.box</span></td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td><strong>(0,1,0)</strong></td>
+          </tr>
+          <tr>
+            <td>ID</td>
+            <td><span class="codigo-inline">#header</span></td>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+            <td><strong>(1,0,0)</strong></td>
+          </tr>
+          <tr>
+            <td>Elemento + Clase</td>
+            <td><span class="codigo-inline">p.box</span></td>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+            <td><strong>(0,1,1)</strong></td>
+          </tr>
+          <tr>
+            <td>ID + Elemento</td>
+            <td><span class="codigo-inline">#header p</span></td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td><strong>(1,0,1)</strong></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="contenedor-dos-columnas">
+        <div class="plantilla">
+          <strong>📋 Ejercicio: Calcula la Especificidad</strong>
+          <p>Calcula la especificidad de estos selectores:</p>
+          <div class="codigo">
+            <p>1. p</p>
+            <p>2. .container</p> 
+            <p>3. #main </p>
+            <p>4. div.box</p> 
+            <p>5. #header .title</p> 
+            <p>6. .red.bold </p>
+            <p>7. #menu li a</p> 
+            <p>8. body > p.intro</p>
+          </div>
+        </div>
+
+        <div class="solucion">
+          <strong>✅ Soluciones</strong>
+          <table style="font-size: 12px">
+            <tr>
+              <th>Selector</th>
+              <th>Especificidad</th>
+              <th>Cálculo</th>
+            </tr>
+            <tr>
+              <td><span class="codigo-inline">p</span></td>
+              <td>(0,0,1)</td>
+              <td>0 IDS + 0 Clases + 1 Elemento</td>
+            </tr>
+            <tr>
+              <td><span class="codigo-inline">.container</span></td>
+              <td>(0,1,0)</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><span class="codigo-inline">#main</span></td>
+              <td>(1,0,0)</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><span class="codigo-inline">div.box</span></td>
+              <td>(0,1,1)</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><span class="codigo-inline">#header .title</span></td>
+              <td>(1,1,0)</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><span class="codigo-inline">.red.bold</span></td>
+              <td>(0,2,0)</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><span class="codigo-inline">#menu li a</span></td>
+              <td>(1,0,2)</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><span class="codigo-inline">body > p.intro</span></td>
+              <td>(0,1,2)</td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="desafio">
+        <strong>🎯 Desafío:</strong> ¿Cuál de estos dos selectores gana?
+        <br /><span class="codigo-inline">.container p</span> (Especificidad:
+        Completar ) vs <span class="codigo-inline">p</span> (Especificidad: Completar)
+        <br /><strong>Respuesta:</strong>
+        <span class="codigo-inline"></span> 
+      </div>
+    </div>
+  </body>
+</html>

@@ -141,3 +141,14 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Configuración local del repo
+AGENTS.md
+
+# Repos anidados
+02-CSS/Tarea/urielroblesg.github.io/.git
+
+# Tarea (semanal)
+02-CSS/Tarea/
+
+reto_final.html

@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlexShop - Laboratorio de Flexbox</title>
+    <link rel="stylesheet" href="base_styles.css" />
+    <link rel="stylesheet" href="flexbox.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-icon">🛒</span>
+        <div>
+          <h1>FlexShop</h1>
+          <p>Laboratorio visual de Flexbox</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-secondary">Mi cuenta</button>
+        <button class="btn btn-primary">Carrito (3)</button>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <section class="hero">
+        <span class="eyebrow">DASW · CSS</span>
+        <h2>Una tienda que necesita orden</h2>
+        <p>
+          La tienda ya tiene contenido y estilos visuales, pero su distribución
+          todavía no utiliza Flexbox. Durante la clase iremos transformando cada
+          zona.
+        </p>
+      </section>
+
+      <!-- =========================================================
+         ETAPA 1
+         FLEX CONTAINER, FLEX ITEMS, MAIN AXIS Y CROSS AXIS
+         ========================================================= -->
+      <section class="lesson-section" id="etapa-1">
+        <div class="lesson-heading">
+          <span class="step-number">01</span>
+          <div>
+            <p class="lesson-tag">Conceptos base</p>
+            <h2>El estante principal</h2>
+          </div>
+        </div>
+
+        <div class="teacher-note">
+          <strong>Objetivo:</strong>
+          convertir #catalogo-principal en Flex Container e identificar cuáles
+          son sus Flex Items. Después, utilizar este mismo bloque para explicar
+          Main Axis y Cross Axis.
+        </div>
+
+        <!-- PADRE: este elemento será el FLEX CONTAINER -->
+        <div class="product-shelf" id="catalogo-principal">
+          <!-- HIJO 1: este elemento será un FLEX ITEM -->
+          <article class="product-card">
+            <span class="product-badge">Top ventas</span>
+            <div class="product-icon">⌨️</div>
+            <p class="product-category">Accesorios</p>
+            <h3>Teclado Mecánico NeoKey</h3>
+            <p class="product-description">
+              Switches táctiles y retroiluminación para tu escritorio.
+            </p>
+            <div class="product-footer">
+              <span class="price">$1,299</span>
+              <button class="btn btn-primary">Agregar</button>
+            </div>
+          </article>
+
+          <!-- HIJO 2: este elemento será un FLEX ITEM -->
+          <article class="product-card">
+            <span class="product-badge">Nuevo</span>
+            <div class="product-icon">🖱️</div>
+            <p class="product-category">Accesorios</p>
+            <h3>Mouse Pulse X</h3>
+            <p class="product-description">
+              Mouse ligero con sensor de alta precisión.
+            </p>
+            <div class="product-footer">
+              <span class="price">$749</span>
+              <button class="btn btn-primary">Agregar</button>
+            </div>
+          </article>
+
+          <!-- HIJO 3: este elemento será un FLEX ITEM -->
+          <article class="product-card">
+            <span class="product-badge">Oferta</span>
+            <div class="product-icon">🎧</div>
+            <p class="product-category">Audio</p>
+            <h3>Headset Orbit Pro</h3>
+            <p class="product-description">
+              Audio envolvente y micrófono desmontable.
+            </p>
+            <div class="product-footer">
+              <span class="price">$999</span>
+              <button class="btn btn-primary">Agregar</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- =========================================================
+         ETAPA 2
+         FLEX-DIRECTION
+         ========================================================= -->
+      <section class="lesson-section" id="etapa-2">
+        <div class="lesson-heading">
+          <span class="step-number">02</span>
+          <div>
+            <p class="lesson-tag">flex-direction</p>
+            <h2>Categorías de la tienda</h2>
+          </div>
+        </div>
+
+        <div class="teacher-note">
+          <strong>Objetivo:</strong>
+          usar esta navegación para comparar row, row-reverse, column y
+          column-reverse. Relacionar cada cambio con el Main Axis.
+        </div>
+
+        <nav class="category-menu" id="menu-categorias">
+          <a href="#">💻 Laptops</a>
+          <a href="#">⌨️ Accesorios</a>
+          <a href="#">🎧 Audio</a>
+          <a href="#">🎮 Gaming</a>
+          <a href="#">📱 Smartphones</a>
+        </nav>
+      </section>
+
+      <!-- =========================================================
+         ETAPA 3
+         FLEX-WRAP: NOWRAP Y WRAP
+         ========================================================= -->
+      <section class="lesson-section" id="etapa-3">
+        <div class="lesson-heading">
+          <span class="step-number">03</span>
+          <div>
+            <p class="lesson-tag">flex-wrap</p>
+            <h2>Ofertas relámpago</h2>
+          </div>
+        </div>
+
+        <div class="teacher-note">
+          <strong>Objetivo:</strong>
+          crear una fila con varios productos y observar qué sucede cuando ya no
+          existe espacio disponible. Comparar nowrap y wrap reduciendo el ancho
+          de la ventana.
+        </div>
+
+        <div class="flash-sale" id="ofertas-relampago">
+          <article class="mini-product">
+            <span>🔌</span>
+            <h3>Hub USB-C</h3>
+            <p>$499</p>
+          </article>
+
+          <article class="mini-product">
+            <span>🎤</span>
+            <h3>Micrófono Mini</h3>
+            <p>$899</p>
+          </article>
+
+          <article class="mini-product">
+            <span>📷</span>
+            <h3>Webcam HD</h3>
+            <p>$649</p>
+          </article>
+
+          <article class="mini-product">
+            <span>🔋</span>
+            <h3>Power Bank</h3>
+            <p>$579</p>
+          </article>
+
+          <article class="mini-product">
+            <span>🕹️</span>
+            <h3>Control Pro</h3>
+            <p>$1,099</p>
+          </article>
+
+          <article class="mini-product">
+            <span>💡</span>
+            <h3>Lámpara RGB</h3>
+            <p>$399</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- =========================================================
+         ETAPA 4
+         JUSTIFY-CONTENT
+         ========================================================= -->
+      <section class="lesson-section" id="etapa-4">
+        <div class="lesson-heading">
+          <span class="step-number">04</span>
+          <div>
+            <p class="lesson-tag">justify-content</p>
+            <h2>Beneficios de compra</h2>
+          </div>
+        </div>
+
+        <div class="teacher-note">
+          <strong>Objetivo:</strong>
+          distribuir estos elementos sobre el Main Axis y comparar flex-start,
+          center, flex-end, space-between, space-around y space-evenly.
+        </div>
+
+        <div class="benefits-bar" id="barra-beneficios">
+          <div class="benefit">
+            <span>🚚</span>
+            <strong>Envío gratis</strong>
+          </div>
+
+          <div class="benefit">
+            <span>🛡️</span>
+            <strong>Compra segura</strong>
+          </div>
+
+          <div class="benefit">
+            <span>↩️</span>
+            <strong>30 días de devolución</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+         ETAPA 5
+         ALIGN-ITEMS
+         ========================================================= -->
+      <section class="lesson-section" id="etapa-5">
+        <div class="lesson-heading">
+          <span class="step-number">05</span>
+          <div>
+            <p class="lesson-tag">align-items</p>
+            <h2>Promociones con diferentes alturas</h2>
+          </div>
+        </div>
+
+        <div class="teacher-note">
+          <strong>Objetivo:</strong>
+          observar la alineación sobre el Cross Axis utilizando elementos con
+          diferentes alturas. Probar stretch, flex-start, center, flex-end y
+          baseline.
+        </div>
+
+        <div class="promo-zone" id="zona-promociones">
+          <article class="promo-card promo-small">
+            <span>🎁</span>
+            <h3>Regalo sorpresa</h3>
+            <p>En compras seleccionadas.</p>
+          </article>
+
+          <article class="promo-card promo-tall">
+            <span>⚡</span>
+            <h3>Semana Tech</h3>
+            <p>
+              Hasta 25% de descuento en accesorios, audio y productos gaming
+              durante toda la semana.
+            </p>
+            <button class="btn btn-primary">Ver promociones</button>
+          </article>
+
+          <article class="promo-card promo-medium">
+            <span>💳</span>
+            <h3>Meses sin intereses</h3>
+            <p>Participan tarjetas seleccionadas.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- =========================================================
+         ETAPA 6
+         FLEX ITEMS: FLEX-BASIS, FLEX-GROW Y FLEX-SHRINK
+         ========================================================= -->
+      <section class="lesson-section" id="etapa-6">
+        <div class="lesson-heading">
+          <span class="step-number">06</span>
+          <div>
+            <p class="lesson-tag">Propiedades de los Flex Items</p>
+            <h2>Escaparate adaptable</h2>
+          </div>
+        </div>
+
+        <div class="teacher-note">
+          <strong>Objetivo:</strong>
+          una vez que #escaparate-adaptable sea un Flex Container, aplicar
+          flex-basis, flex-grow y flex-shrink directamente sobre distintos
+          productos.
+        </div>
+
+        <div class="adaptive-showcase" id="escaparate-adaptable">
+          <article class="adaptive-item item-basic" id="producto-base">
+            <span class="showcase-number">A</span>
+            <h3>Producto Base</h3>
+            <p>Úsalo primero para explicar flex-basis.</p>
+          </article>
+
+          <article class="adaptive-item item-featured" id="producto-grow">
+            <span class="showcase-number">B</span>
+            <h3>Producto Destacado</h3>
+            <p>
+              Después haz que aproveche más espacio disponible con flex-grow.
+            </p>
+          </article>
+
+          <article class="adaptive-item item-protected" id="producto-shrink">
+            <span class="showcase-number">C</span>
+            <h3>Producto Protegido</h3>
+            <p>Úsalo para observar y controlar cuánto puede reducirse.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- =========================================================
+         RETO PARA LOS ALUMNOS
+         ESTA SECCIÓN DEBE SER RESUELTA POR ELLOS
+         ========================================================= -->
+      <section class="student-challenge" id="reto-alumnos">
+        <div class="challenge-header">
+          <span class="challenge-label">🎯 Reto del equipo</span>
+          <h2>Construyan la sección “Recomendados para ti”</h2>
+          <p>
+            La sección está visualmente preparada, pero su distribución está
+            rota. Utilicen únicamente lo aprendido hoy sobre Flexbox para
+            arreglarla.
+          </p>
+        </div>
+
+        <!--
+        ============================================================
+        INSTRUCCIONES PARA LOS ALUMNOS
+        ============================================================
+
+        1. Convierte #recomendados-grid en un FLEX CONTAINER.
+
+        2. Los productos deben comenzar acomodándose horizontalmente.
+
+        3. Cuando ya no exista espacio suficiente en pantalla,
+           los productos deben pasar a la siguiente línea.
+           Pista: recuerda flex-wrap.
+
+        4. Distribuye las tarjetas para que el espacio sobrante
+           se reparta visualmente entre ellas.
+           Utiliza justify-content.
+
+        5. Alinea las tarjetas correctamente sobre el Cross Axis.
+           Prueba diferentes valores de align-items antes de elegir uno.
+
+        6. Configura las tarjetas .recommended-card para que tengan
+           un tamaño inicial razonable utilizando flex-basis.
+
+        7. El producto con id #recomendado-destacado debe poder ocupar
+           más espacio libre que los demás.
+           Utiliza flex-grow.
+
+        8. El producto con id #recomendado-protegido debe resistirse
+           más a reducir su tamaño cuando falte espacio.
+           Utiliza flex-shrink.
+
+        REGLA:
+        No modifiques el HTML de las tarjetas.
+        Todo el reto debe resolverse desde la sección
+        "RETO DE LOS ALUMNOS" ubicada al final de styles.css.
+        ============================================================
+      -->
+
+        <div class="recommended-grid" id="recomendados-grid">
+          <article class="recommended-card">
+            <span class="product-badge">Recomendado</span>
+            <div class="product-icon">🖥️</div>
+            <h3>Monitor ViewMax 24"</h3>
+            <p>Panel IPS Full HD para estudio, oficina y entretenimiento.</p>
+            <strong class="price">$2,799</strong>
+          </article>
+
+          <article class="recommended-card" id="recomendado-destacado">
+            <span class="product-badge">⭐ Favorito</span>
+            <div class="product-icon">💻</div>
+            <h3>Laptop NovaBook</h3>
+            <p>
+              Equipo equilibrado para programación, productividad y uso diario.
+            </p>
+            <strong class="price">$14,499</strong>
+          </article>
+
+          <article class="recommended-card">
+            <span class="product-badge">Oferta</span>
+            <div class="product-icon">🎧</div>
+            <h3>Audífonos AirBeat</h3>
+            <p>Audio inalámbrico con cancelación de ruido.</p>
+            <strong class="price">$1,599</strong>
+          </article>
+
+          <article class="recommended-card" id="recomendado-protegido">
+            <span class="product-badge">Premium</span>
+            <div class="product-icon">🎮</div>
+            <h3>GameBox Controller</h3>
+            <p>Control inalámbrico con sticks de precisión.</p>
+            <strong class="price">$1,249</strong>
+          </article>
+        </div>
+
+        <div class="challenge-checklist">
+          <h3>Antes de entregar, comprueben:</h3>
+          <label
+            ><input type="checkbox" /> Identificamos correctamente padre e
+            hijos.</label
+          >
+          <label
+            ><input type="checkbox" /> Podemos señalar Main Axis y Cross
+            Axis.</label
+          >
+          <label
+            ><input type="checkbox" /> La sección responde al reducir la
+            ventana.</label
+          >
+          <label
+            ><input type="checkbox" /> Podemos explicar por qué usamos cada
+            propiedad.</label
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>FlexShop · Laboratorio didáctico de CSS Flexbox</p>
+    </footer>
+  </body>
+</html>

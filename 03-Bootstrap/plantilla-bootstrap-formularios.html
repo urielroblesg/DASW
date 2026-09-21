@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plantilla: Formulario de Inscripción (para completar)</title>
+
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  body { background-color: #f4f6f9; padding-bottom: 60px; }
+  .seccion-titulo {
+    border-left: 5px solid #0d6efd;
+    padding-left: 12px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+  }
+  .tarea {
+    background-color: #e7f1ff;
+    border: 1px dashed #0d6efd;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  code { color: #d6336c; }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark mb-4">
+  <div class="container">
+    <span class="navbar-brand mb-0 h1">🎓 Plantilla para completar: Formularios con Bootstrap 5</span>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="alert alert-primary">
+    <strong>Instrucciones:</strong> Este HTML ya tiene la estructura y el contenido, pero le faltan
+    las clases de Bootstrap. Ve completando cada <code>TODO</code> según lo que vayamos viendo en clase.
+  </div>
+
+  <!-- TODO 0: agrega la clase para que este form use grid (row + gap) y active el modo de validación -->
+  <form class="TODO-form" novalidate>
+
+    <!-- ================= LAYOUT + FLOATING LABELS ================= -->
+    <h4 class="seccion-titulo">1. Layout en grid + Floating Labels</h4>
+    <div class="tarea">
+      📝 Agrega las clases de columna (<code>col-md-6</code>) a los dos <code>div</code> de abajo,
+      y la clase que activa el "floating label" al contenedor de cada input.
+      Recuerda: el <code>&lt;label&gt;</code> va DESPUÉS del <code>&lt;input&gt;</code>.
+    </div>
+
+    <div class="TODO-col">
+      <div class="TODO-floating">
+        <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+        <label for="nombre">Nombre completo</label>
+        <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
+      </div>
+    </div>
+
+    <div class="TODO-col">
+      <div class="TODO-floating">
+        <input type="email" class="form-control" id="correo" placeholder="correo@ejemplo.com" required>
+        <label for="correo">Correo electrónico</label>
+        <div class="invalid-feedback">Ingresa un correo válido.</div>
+      </div>
+    </div>
+
+    <!-- ================= ELEMENTOS DE SELECCIÓN ================= -->
+    <h4 class="seccion-titulo">2. Elementos de selección</h4>
+    <div class="tarea">
+      📝 El <code>&lt;select&gt;</code> necesita la clase que lo convierte en un dropdown estilizado.
+      Cada radio/checkbox necesita dos clases: una en el contenedor (<code>div</code>) y otra en el
+      <code>input</code> y otra en el <code>label</code>.
+    </div>
+
+    <div class="col-md-6">
+      <label for="curso" class="form-label">Curso al que te inscribes</label>
+      <select class="TODO-select" id="curso" required>
+        <option value="" selected disabled>Selecciona un curso...</option>
+        <option value="html">HTML y CSS</option>
+        <option value="bootstrap">Bootstrap 5</option>
+        <option value="js">JavaScript</option>
+      </select>
+      <div class="invalid-feedback">Debes elegir un curso.</div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label d-block">Modalidad</label>
+      <div class="TODO-check TODO-check-inline">
+        <input class="TODO-check-input" type="radio" name="modalidad" id="presencial" value="presencial" required>
+        <label class="TODO-check-label" for="presencial">Presencial</label>
+      </div>
+      <div class="TODO-check TODO-check-inline">
+        <input class="TODO-check-input" type="radio" name="modalidad" id="virtual" value="virtual" required>
+        <label class="TODO-check-label" for="virtual">Virtual</label>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label class="form-label d-block">Intereses (puedes elegir varios)</label>
+      <div class="TODO-check TODO-check-inline">
+        <input class="TODO-check-input" type="checkbox" id="interes1">
+        <label class="TODO-check-label" for="interes1">Frontend</label>
+      </div>
+      <div class="TODO-check TODO-check-inline">
+        <input class="TODO-check-input" type="checkbox" id="interes2">
+        <label class="TODO-check-label" for="interes2">Backend</label>
+      </div>
+      <div class="TODO-check TODO-check-inline">
+        <input class="TODO-check-input" type="checkbox" id="interes3">
+        <label class="TODO-check-label" for="interes3">Diseño UI/UX</label>
+      </div>
+    </div>
+
+    <!-- ================= SWITCHES ================= -->
+    <h4 class="seccion-titulo">3. Switches</h4>
+    <div class="tarea">
+      📝 Un switch es casi igual a un checkbox... ¡solo le falta UNA clase extra en el contenedor!
+      ¿Cuál crees que es?
+    </div>
+
+    <div class="col-md-6">
+      <div class="TODO-check">
+        <input class="TODO-check-input" type="checkbox" id="notificaciones">
+        <label class="TODO-check-label" for="notificaciones">Recibir notificaciones por correo</label>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="TODO-check">
+        <input class="TODO-check-input" type="checkbox" id="terminos" required>
+        <label class="TODO-check-label" for="terminos">Acepto los términos y condiciones</label>
+        <div class="invalid-feedback">Debes aceptar los términos para continuar.</div>
+      </div>
+    </div>
+
+    <!-- ================= VALIDACIONES VISUALES ================= -->
+    <h4 class="seccion-titulo">4. Validaciones visuales</h4>
+    <div class="tarea">
+      📝 Las validaciones ya están casi listas (mira el <code>&lt;script&gt;</code> al final).
+      Solo falta que el formulario tenga la clase correcta en el TODO 0, arriba del todo.
+      Cuando lo completes, prueba enviar el formulario vacío y observa qué pasa.
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Enviar inscripción</button>
+    </div>
+
+  </form>
+
+  <div id="resultado" class="alert alert-success mt-4 d-none">
+    ✅ ¡Formulario válido! En un caso real, aquí enviarías los datos al servidor.
+  </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Este script ya está completo, no hay que tocarlo.
+  (() => {
+    'use strict';
+    const form = document.querySelector('form');
+    const resultado = document.getElementById('resultado');
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (!form.checkValidity()) {
+        resultado.classList.add('d-none');
+      } else {
+        resultado.classList.remove('d-none');
+      }
+
+      form.classList.add('was-validated');
+    });
+  })();
+</script>
+
+</body>
+</html>

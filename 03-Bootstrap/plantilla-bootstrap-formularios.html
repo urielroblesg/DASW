@@ -43,7 +43,7 @@
   </div>
 
   <!-- TODO 0: agrega la clase para que este form use grid (row + gap) y active el modo de validación -->
-  <form class="TODO-form" >
+  <form class="row g-3 was-validated" novalidate>
 
     <!-- ================= LAYOUT + FLOATING LABELS ================= -->
     <h4 class="seccion-titulo">1. Layout en grid + Floating Labels</h4>
@@ -53,16 +53,16 @@
       Recuerda: el <code>&lt;label&gt;</code> va DESPUÉS del <code>&lt;input&gt;</code>.
     </div>
 
-    <div class="">
-      <div class="">
+    <div class="col-md-6 col-12">
+      <div class="form-floating">
         <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
         <label for="nombre">Nombre completo</label>
         <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
       </div>
     </div>
 
-    <div class="">
-      <div class="">
+    <div class="col-md-6 col-12">
+      <div class="form-floating">
         <input type="email" class="form-control" id="correo" placeholder="correo@ejemplo.com" required>
         <label for="correo">Correo electrónico</label>
         <div class="invalid-feedback">Ingresa un correo válido.</div>
@@ -79,7 +79,7 @@
 
     <div class="col-md-6">
       <label for="curso" class="form-label">Curso al que te inscribes</label>
-      <select class="TODO-select" id="curso" required>
+      <select class="form-select" id="curso" required>
         <option value="" selected disabled>Selecciona un curso...</option>
         <option value="html">HTML y CSS</option>
         <option value="bootstrap">Bootstrap 5</option>
@@ -90,29 +90,29 @@
 
     <div class="col-md-6">
       <label class="form-label d-block">Modalidad</label>
-      <div class="TODO-check TODO-check-inline">
-        <input class="TODO-check-input" type="radio" name="modalidad" id="presencial" value="presencial" required>
-        <label class="TODO-check-label" for="presencial">Presencial</label>
+      <div class="form-check TODO-check-inline">
+        <input class="form-check-input" type="radio" name="modalidad" id="presencial" value="presencial" required>
+        <label class="form-check-label" for="presencial">Presencial</label>
       </div>
-      <div class="TODO-check TODO-check-inline">
-        <input class="TODO-check-input" type="radio" name="modalidad" id="virtual" value="virtual" required>
-        <label class="TODO-check-label" for="virtual">Virtual</label>
+      <div class="form-check TODO-check-inline">
+        <input class="form-check-input" type="radio" name="modalidad" id="virtual" value="virtual" required>
+        <label class="form-check-label" for="virtual">Virtual</label>
       </div>
     </div>
 
     <div class="col-12">
       <label class="form-label d-block">Intereses (puedes elegir varios)</label>
-      <div class="TODO-check TODO-check-inline">
-        <input class="TODO-check-input" type="checkbox" id="interes1">
-        <label class="TODO-check-label" for="interes1">Frontend</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="interes1">
+        <label class="form-check-label" for="interes1">Frontend</label>
       </div>
-      <div class="TODO-check TODO-check-inline">
-        <input class="TODO-check-input" type="checkbox" id="interes2">
-        <label class="TODO-check-label" for="interes2">Backend</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="interes2">
+        <label class="form-check-label" for="interes2">Backend</label>
       </div>
-      <div class="TODO-check TODO-check-inline">
-        <input class="TODO-check-input" type="checkbox" id="interes3">
-        <label class="TODO-check-label" for="interes3">Diseño UI/UX</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="interes3">
+        <label class="form-check-label" for="interes3">Diseño UI/UX</label>
       </div>
     </div>
 
@@ -124,16 +124,16 @@
     </div>
 
     <div class="col-md-6">
-      <div class="TODO-check">
-        <input class="TODO-check-input" type="checkbox" id="notificaciones">
-        <label class="TODO-check-label" for="notificaciones">Recibir notificaciones por correo</label>
+      <div class="form-switch">
+        <input class="form-check-input" type="checkbox" id="notificaciones">
+        <label class="form-check-label" for="notificaciones">Recibir notificaciones por correo</label>
       </div>
     </div>
 
     <div class="col-md-6">
-      <div class="TODO-check">
-        <input class="TODO-check-input" type="checkbox" id="terminos" required>
-        <label class="TODO-check-label" for="terminos">Acepto los términos y condiciones</label>
+      <div class="form-switch">
+        <input class="form-check-input" type="checkbox" id="terminos" required>
+        <label class="form-check-label" for="terminos">Acepto los términos y condiciones</label>
         <div class="invalid-feedback">Debes aceptar los términos para continuar.</div>
       </div>
     </div>
@@ -147,7 +147,7 @@
     </div>
 
     <div class="col-12">
-      <button class="btn btn-primary" type="submit">Enviar inscripción</button>
+      <input class="btn btn-primary" type="submit" value="Enviar inscripción"></input>
     </div>
 
   </form>

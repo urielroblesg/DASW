@@ -9,7 +9,7 @@ if (edad >= 18) {
 }
 
 // 2. SWITCH
-const dia = "Lunes";
+const dia = "Jueves";
 switch (dia) {
   case "Lunes":
     console.log("Inicio de semana");
@@ -29,7 +29,7 @@ for (let i = 1; i <= 3; i++) {
 
 // 4. BUCLE WHILE (Se ejecuta mientras la condición sea verdadera)
 console.log("--- Bucle While ---");
-let contador = 0;
+let contador = 3;
 while (contador < 3) {
   console.log(`Contador While: ${contador}`);
   contador++;

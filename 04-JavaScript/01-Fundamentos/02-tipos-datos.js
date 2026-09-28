@@ -1,7 +1,7 @@
 console.log("%c--- 2. TIPOS DE DATOS ---", "color: cyan; font-weight: bold;");
 
 // 1. PRIMITIVOS (Guardan el valor directamente en memoria)
-const texto = "Hola Mundo";       // String
+const texto = `Hola mundo`;       // String
 const numero = 42;                 // Number
 const booleano = true;             // Boolean
 const nulo = null;                 // Null (ausencia intencional de valor)
@@ -20,7 +20,7 @@ b = 20;
 console.log({ a, b }); // a sigue siendo 10, b es 20
 
 // 2. COMPLEJOS / REFERENCIA (Guardan una referencia en memoria)
-const usuario = { nombre: "Ana", edad: 25 }; // Object
+const usuario = { nombre: "Ana", edad: 25, email : '@email.com' }; // Object
 const frutas = ["Manzana", "Banana"];          // Array
 
 console.log(typeof usuario); // "object"

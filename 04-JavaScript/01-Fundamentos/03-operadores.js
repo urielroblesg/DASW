@@ -5,16 +5,17 @@ const suma = 10 + 5;
 const modulo = 10 % 3; // Residuo (1)
 let incremento = 5;
 incremento++; // 6
+incremento--; // 5
 
 console.log({ suma, modulo, incremento });
 
 // 2. COMPARACIÓN
-const num = 5;
-const strNum = "5";
+const num = 5; // number
+const strNum = "5"; // String
 
 console.log(num == strNum);  // true (Compara solo valor, realiza conversión débil)
 console.log(num === strNum); // false (Compara valor Y tipo de dato -> RECOMENDADO)
-console.log(num !== 10);     // true (Diferencia estricta)
+console.log(num !== strNum);     // true (Diferencia estricta)
 
 // 3. LÓGICOS (AND &&, OR ||, NOT !)
 const tieneEdad = true;

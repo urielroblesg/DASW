@@ -149,6 +149,7 @@ console.log("every (edad > 20):", todosMayores20);  // Salida: true
 // ============================================
 console.log("\n=== MÉTODOS DE TRANSFORMACIÓN ===");
 
+
 console.log("map (agregar 16% impuesto):", preciosConImpuesto); 
 
 

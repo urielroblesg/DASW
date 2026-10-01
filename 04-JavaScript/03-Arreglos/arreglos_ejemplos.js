@@ -147,20 +147,41 @@ console.log("every (edad > 20):", todosMayores20);  // Salida: true
 
 // 5. MÉTODOS DE TRANSFORMACIÓN
 // ============================================
+
+
 console.log("\n=== MÉTODOS DE TRANSFORMACIÓN ===");
 
+const precios = [100, 25, 80, 40];
+const conDecuento = precios.map(p => p * .8);
 
+const preciosConImpuesto = precios.map(p => p * 1.16);
+
+console.log("map (descontar 20%):", conDecuento); 
 console.log("map (agregar 16% impuesto):", preciosConImpuesto); 
 
 
+const numStr = ["1", "2", '3'];
+const numerosInt = numStr.map(n => parseInt(n));
+console.log('NumStr Original: ', numStr);
+
 console.log("map (string a número):", numerosInt);
 
+const numerosReduce = [100, 25, 80, 40];
 
+const suma = numerosReduce.reduce((acumulador, current) => acumulador + current, 0);
 console.log("reduce (suma):", suma);
 
+const nums = [1, 2, 3, 4, 5];
+const producto_total = nums.reduce((acumulador, current) => acumulador * current, 1);
 
 console.log("reduce (producto):", producto_total); 
 
+const palabras = ["hola", "mundo", "hola", "javascript"];
+
+const conteo = palabras.reduce((acc, palabra) => {
+  acc[palabra] = (acc[palabra] || 0) + 1;
+  return acc;
+}, {});
 
 console.log("reduce (conteo):", conteo); 
 
@@ -168,7 +189,8 @@ console.log("reduce (conteo):", conteo);
 console.log("map (a mayúsculas):", mayusculas);
 
 
-
+const grupos = [[1, 2], [3, 4], [5]];
+const aplanado = grupos.flat();
 console.log("flatMap (aplanar):", aplanado);
 
 
@@ -178,31 +200,50 @@ console.log("flatMap (aplanar):", aplanado);
 console.log("\n=== MÉTODOS DE MANIPULACIÓN Y COMBINACIÓN ===");
 
 
-console.log("reverse:", inversible);
+// reverse() - invierte el arreglo (modifica el original)
+let inversible = [1, 2, 3, 4];
+inversible.reverse();
+console.log("reverse:", inversible);  // Salida: [4, 3, 2, 1]
+
+// sort() - ordena el arreglo (modifica el original)
+let desordenado = [3, 1, 4, 1, 5, 9];
+desordenado.sort((a, b) => a - b);  // Comparador numérico
+console.log("sort (números):", desordenado);  // Salida: [1, 1, 3, 4, 5, 9]
+
+let palabrasMez = ["perro", "gato", "águila", "abeja"];
+palabrasMez.sort();  // Sort por defecto (alfabético)
+console.log("sort (alfabético):", palabrasMez);  // Salida: ['abeja', 'águila', 'gato', 'perro']
+
+// sort descendente
+let descendente = [3, 1, 4, 1, 5];
+descendente.sort((a, b) => b - a);
+console.log("sort (descendente):", descendente);  // Salida: [5, 4, 3, 1, 1]
+
+// join() - convierte arreglo a string
+const partes = ["Hola", "mundo", "JavaScript"];
+const mensaje = partes.join(" ");
+console.log("join:", mensaje);  // Salida: Hola mundo JavaScript
+
+// split() - convierte string a arreglo (método de string, no de arreglo)
+const frase = "uno, dos, tres, cuatro";
+const elementos = frase.split(", ");
+console.log("split:", elementos);  // Salida: ['uno', 'dos', 'tres', 'cuatro']
+
+// flat() - aplana arreglos anidados
+const anidado = [1, [2, 3], [4, [5, 6]]];
+const plano = anidado.flat();  // Por defecto profundidad 1
+console.log("flat (profundidad 1):", plano);  // Salida: [1, 2, 3, 4, [5, 6]]
+
+const planoCompleto = anidado.flat(2);  // Profundidad 2
+console.log("flat (profundidad 2):", planoCompleto);  // Salida: [1, 2, 3, 4, 5, 6]
 
 
+const datos = [1,2,3,4,5,6];
 
-console.log("sort (números):", desordenado); 
-
-
-console.log("sort (alfabético):", palabrasMez);
-
-
-
-console.log("sort (descendente):", descendente); 
-
-
-
-console.log("join:", mensaje);
-
-
-
-console.log("flat (profundidad 1):", plano); 
-
-
-
-console.log("flat (profundidad 2):", planoCompleto);
-
+const resultado = datos.filter(d => d > 2)
+.filter(d => d % 2 == 0)
+.map(n => n * 2)
+.reduce((acc, d) => acc + d, 0);
 
 
 console.log("Encadenamiento:", resultado);

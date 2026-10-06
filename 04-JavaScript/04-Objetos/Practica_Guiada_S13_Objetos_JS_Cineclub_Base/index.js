@@ -8,7 +8,7 @@ const peliculaLiteral = {
   id: "pel-001",
   titulo: "Cinema Paradiso",
   genero: "Drama",
-  duracion: 124
+  duracion: 124,
 };
 
 console.log(peliculaLiteral);
@@ -18,46 +18,51 @@ console.group("2. Consulta de propiedades");
 
 console.log("Punto:", peliculaLiteral.titulo);
 console.log("Corchetes:", peliculaLiteral["genero"]);
-console.log(
-  "¿Tiene duración?",
-  Object.hasOwn(peliculaLiteral, "duracion")
-);
-console.log(
-  "¿Tiene director?",
-  Object.hasOwn(peliculaLiteral, "director")
-);
+console.log("¿Tiene duración?", Object.hasOwn(peliculaLiteral, "duracion"));
+console.log("¿Tiene director?", Object.hasOwn(peliculaLiteral, "director"));
 
 console.groupEnd();
 
 console.group("3. Clonación con spread");
 
-// TODO A: crea peliculaExtendida mediante spread.
 // Cambia únicamente la duración a 155.
-
-// TODO B: muestra la duración original y la actualizada.
+const peliculaExtendida = {
+  ...peliculaLiteral,
+  duracion: 155,
+};
 // Verificación: la original debe conservar 124.
+console.log("Duración original:", peliculaLiteral.duracion);
+console.log("Duración actualizada:", peliculaExtendida.duracion);
 
 console.groupEnd();
 
 console.group("4. Modelo Pelicula");
 
-// TODO C: crea una Pelicula con estos datos:
-// "La llegada", "Ciencia ficción", 116.
+const pelicula = new Pelicula("La llegada", "Ciencia ficción", 116);
 
-// TODO D: muestra su ID y resumen().
+console.log("ID:", pelicula.id);
+console.log("Resumen:", pelicula.resumen());
 
 console.groupEnd();
 
 console.group("5. Validaciones y excepción");
 
-// TODO E: cambia la duración válida a 118.
+pelicula.duracion = 118;
+console.log("Duración válida:", pelicula.duracion);
 
-// TODO F: intenta crear estos tres casos dentro de try/catch:
-// 1. título vacío
-// 2. género vacío
-// 3. duración negativa
 // Verificación: cada caso debe lanzar PeliculaException.
-
+for (const datos of [
+  ["", "Suspenso", 160],
+  ["Psicosis", "", 109],
+  ["Psicosis", "Suspenso", -10],
+]) {
+  try {
+    new Pelicula(...datos);
+  } catch (error) {
+    console.error(error);
+    console.assert(error instanceof PeliculaException);
+  }
+}
 console.groupEnd();
 
 console.group("6. Objeto externo y JSON");
@@ -66,7 +71,7 @@ const datosExternos = {
   titulo: "Amélie",
   genero: "Comedia romántica",
   duracion: 122,
-  notaInterna: "No copiar"
+  notaInterna: "No copiar",
 };
 
 const peliculaJson = `{
@@ -75,10 +80,13 @@ const peliculaJson = `{
   "duracion": 125
 }`;
 
-// TODO G: crea una película desde datosExternos.
-// TODO H: verifica que notaInterna no se copió.
-// TODO I: crea una película desde peliculaJson.
-// TODO J: comprueba que es una instancia de Pelicula.
+const amelie = Pelicula.createFromObject(datosExternos);
+const chihiro = Pelicula.createFromJson(peliculaJson);
+
+console.log("Amélie:", amelie);
+console.assert(!Object.hasOwn(amelie, "notaInterna"));
+console.log("Chihiro:", chihiro);
+console.assert(chihiro instanceof Pelicula);
 
 console.groupEnd();
 

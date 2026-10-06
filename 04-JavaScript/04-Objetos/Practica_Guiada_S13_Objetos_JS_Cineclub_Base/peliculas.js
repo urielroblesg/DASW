@@ -1,47 +1,62 @@
 import { generarId } from "./utils.js";
 
 export class PeliculaException extends Error {
-  // TODO 3: implementa la excepción propia.
-  // Verificación: error.name debe ser "PeliculaException".
+  constructor(message) {
+    super(message);
+    this.name = "PeliculaException";
+  }
 }
 
 export class Pelicula {
-  // TODO 1.1: declara #id, #titulo, #genero y #duracion.
-
+  #id;
+  #titulo;
+  #genero;
+  #duracion;
   constructor(titulo, genero, duracion) {
-    // TODO 1.2: genera el identificador.
-    // TODO 1.3: asigna los datos mediante sus setters.
+    this.#id = generarId();
+    this.titulo = titulo;
+    this.genero = genero;
+    this.duracion = duracion;
   }
 
   get id() {
-    // TODO 1.4: devuelve el identificador.
+    return this.#id;
   }
 
   get titulo() {
-    // TODO 2.1: devuelve el título.
+    return this.#titulo;
   }
 
   set titulo(value) {
-    // TODO 2.2: exige texto no vacío y guarda trim().
-    // Lanza PeliculaException si el valor es incorrecto.
+    if (typeof value !== "string" || value.trim() === "") {
+      throw new PeliculaException("El titulo no puede estar vacio.");
+    }
+    this.#titulo = value.trim();
   }
 
   get genero() {
-    // TODO 2.3: devuelve el género.
+    return this.#genero;
   }
 
   set genero(value) {
-    // TODO 2.4: exige texto no vacío y guarda trim().
-    // Lanza PeliculaException si el valor es incorrecto.
+    if (typeof value !== "string" || value.trim() === "") {
+      throw new PeliculaException("El genero no puede estar vacio.");
+    }
+
+    this.#genero = value.trim();
   }
 
   get duracion() {
-    // TODO 2.5: devuelve la duración.
+    return this.#duracion;
   }
 
   set duracion(value) {
-    // TODO 2.6: acepta números finitos mayores que cero.
-    // Lanza PeliculaException si el valor es incorrecto.
+    if (!Number.isFinite(value) || value <= 0) {
+      throw new PeliculaException(
+        "La duracion no tiene el formato correcto/es invalida.",
+      );
+    }
+    this.#duracion = value;
   }
 
   resumen() {
@@ -49,14 +64,26 @@ export class Pelicula {
   }
 
   static createFromObject(value) {
-    // TODO 4.1: valida que value sea un objeto y no un arreglo.
-    // TODO 4.2: desestructura titulo, genero y duracion.
-    // TODO 4.3: devuelve una instancia nueva.
+    if (value === null || typeof value !== "object" || Array.isArray(value)) {
+      throw new PeliculaException("Se espera un objeto de Pelicula");
+    }
+
+    const { titulo, genero, duracion } = value;
+
+    return new Pelicula(titulo, genero, duracion);
   }
 
   static createFromJson(jsonValue) {
-    // TODO 5.1: valida que se recibió texto.
-    // TODO 5.2: usa JSON.parse() y createFromObject().
-    // TODO 5.3: convierte errores de sintaxis en PeliculaException.
+    if (typeof jsonValue !== "string") {
+      throw new PeliculaException("Se espera un texto en formato json.");
+    }
+
+    try {
+      const obj = JSON.parse(jsonValue);
+      return Pelicula.createFromObject(obj);
+    } catch (error) {
+      if (error instanceof PeliculaException) throw error;
+      throw new PeliculaException("EL JSON de la peli no es valido.");
+    }
   }
 }

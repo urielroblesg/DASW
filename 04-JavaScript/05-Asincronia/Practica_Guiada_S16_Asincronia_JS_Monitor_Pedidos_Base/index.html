@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitor de pedidos | DASW</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #172b46;
+      background: #f3f6fb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    main {
+      width: min(680px, 100%);
+      padding: 32px;
+      background: #ffffff;
+      border: 1px solid #dce4ee;
+      border-top: 6px solid #2dd4bf;
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(17, 33, 58, 0.12);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #0f766e;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #11213a;
+      font-size: clamp(32px, 7vw, 48px);
+      line-height: 1.1;
+    }
+
+    .intro {
+      margin: 14px 0 26px;
+      color: #52637a;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: end;
+    }
+
+    label {
+      grid-column: 1 / -1;
+      font-weight: 700;
+    }
+
+    input,
+    button {
+      min-height: 46px;
+      padding: 10px 14px;
+      border-radius: 9px;
+      font: inherit;
+    }
+
+    input {
+      border: 1px solid #aab8ca;
+    }
+
+    input:focus {
+      outline: 3px solid rgba(45, 212, 191, 0.25);
+      border-color: #0f766e;
+    }
+
+    button {
+      border: 0;
+      background: #11213a;
+      color: #ffffff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1f3658;
+    }
+
+    button:disabled {
+      cursor: wait;
+      opacity: 0.65;
+    }
+
+    #estado {
+      min-height: 28px;
+      margin: 18px 0 8px;
+      color: #0f766e;
+      font-weight: 700;
+    }
+
+    #resultado {
+      min-height: 145px;
+      padding: 20px;
+      background: #f8fafc;
+      border: 1px dashed #aab8ca;
+      border-radius: 12px;
+    }
+
+    #resultado:empty::before {
+      content: "Aquí aparecerá el resultado de la consulta.";
+      color: #718096;
+    }
+
+    .pedido {
+      border-left: 5px solid #2dd4bf;
+      padding-left: 16px;
+    }
+
+    .pedido h2,
+    .error {
+      margin-top: 0;
+    }
+
+    .error {
+      color: #b42318;
+      font-weight: 700;
+    }
+
+    @media (max-width: 560px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+
+      label {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">DASW LAB · SESIÓN 16</p>
+    <h1>Monitor de pedidos</h1>
+    <p class="intro">Consulta un pedido simulado y observa cómo JavaScript espera el resultado sin bloquear la interfaz.</p>
+
+    <form id="pedido-form">
+      <label for="pedido-id">ID del pedido</label>
+      <input id="pedido-id" value="A-17" required autocomplete="off">
+      <button id="consultar-btn">Consultar</button>
+    </form>
+    <p id="estado" aria-live="polite"></p>
+    <section id="resultado" aria-live="polite"></section>
+  </main>
+
+  <!-- app.js es el punto de entrada e importa las funciones de api.js. -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
+

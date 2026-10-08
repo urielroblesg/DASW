@@ -21,13 +21,13 @@ const botonConsultar = document.querySelector('#consultar-btn');
 
 // Orden esperado: _______________________________________________
 
-console.log('A: inicio');
+// console.log('A: inicio');
 
-setTimeout(() => {
-  console.log('B: temporizador');
-}, 0);
+// setTimeout(() => {
+//   console.log('B: temporizador');
+// }, 0);
 
-console.log('C: fin');
+// console.log('C: fin');
 
 /*
  * DEMOSTRACIÓN. Operación bloqueante

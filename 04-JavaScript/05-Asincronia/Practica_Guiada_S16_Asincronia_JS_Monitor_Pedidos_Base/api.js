@@ -1,19 +1,19 @@
-'use strict';
+"use strict";
 
 // Base de datos simulada para la práctica.
 const pedidos = {
-  'A-17': {
-    id: 'A-17',
-    estado: 'En camino',
+  "A-17": {
+    id: "A-17",
+    estado: "En camino",
     total: 420,
-    cliente: 'Ana Torres'
+    cliente: "Ana Torres",
   },
-  'B-08': {
-    id: 'B-08',
-    estado: 'Preparando',
+  "B-08": {
+    id: "B-08",
+    estado: "Preparando",
     total: 185,
-    cliente: 'Luis Vega'
-  }
+    cliente: "Luis Vega",
+  },
 };
 
 /**
@@ -23,11 +23,8 @@ const pedidos = {
  * - Retorna una nueva Promise.
  * - Usa setTimeout para llamar a resolve después de ms.
  */
-export const esperar = (ms) => {
-  // TODO PG1: implementa esta función.
-  throw new Error('TODO PG1 pendiente: implementar esperar(ms)');
-};
-
+export const esperar = (ms) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
 /**
  * Busca un pedido después de una espera simulada.
  *
@@ -38,8 +35,13 @@ export const esperar = (ms) => {
  * - Rechaza con Error cuando el ID no existe.
  */
 export const obtenerPedido = (id) => {
-  // TODO PG2: implementa esta función.
-  throw new Error('TODO PG2 pendiente: implementar obtenerPedido(id)');
+  return esperar(1000).then(() => {
+    const pedido = pedidos[id];
+
+    if (pedido == null) throw new Error(`No existe el pedido ${id}`);
+
+    return { ...pedido };
+  });
 };
 
 /**
@@ -50,7 +52,8 @@ export const obtenerPedido = (id) => {
  * - Devuelve una promesa cumplida con el objeto del repartidor.
  */
 export const obtenerRepartidor = () => {
-  // TODO PG7: implementa esta función.
-  throw new Error('TODO PG7 pendiente: implementar obtenerRepartidor()');
+  return esperar(700).then(() => ({
+    nombre: "Juan",
+    unidad: 12,
+  }));
 };
-

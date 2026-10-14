@@ -1,16 +1,12 @@
-'use strict';
+"use strict";
 
-import {
-  esperar,
-  obtenerPedido,
-  obtenerRepartidor
-} from './api.js';
+import { esperar, obtenerPedido, obtenerRepartidor } from "./api.js";
 
-const form = document.querySelector('#pedido-form');
-const input = document.querySelector('#pedido-id');
-const estado = document.querySelector('#estado');
-const resultado = document.querySelector('#resultado');
-const botonConsultar = document.querySelector('#consultar-btn');
+const form = document.querySelector("#pedido-form");
+const input = document.querySelector("#pedido-id");
+const estado = document.querySelector("#estado");
+const resultado = document.querySelector("#resultado");
+const botonConsultar = document.querySelector("#consultar-btn");
 
 /*
  * PREDICCIÓN 1. Orden de ejecución
@@ -42,7 +38,9 @@ const bloquearDurante = (ms) => {
   }
 };
 
-// bloquearDurante(1500);
+// setTimeout(() => console.log('Codigo no bloqueante'), 5000);
+
+// bloquearDurante(5000);
 
 /*
  * PREDICCIÓN 2. Microtareas y tareas
@@ -66,8 +64,18 @@ const bloquearDurante = (ms) => {
  * - Registra "Consulta terminada" en finally.
  */
 const cargarPedidoConThen = (id) => {
-  // TODO PG3: implementa esta función.
-  throw new Error('TODO PG3 pendiente: implementar cargarPedidoConThen(id)');
+  return obtenerPedido(id)
+    .then((pedido) => {
+      console.log("Pedido: ", pedido);
+      return pedido;
+    })
+    .catch((err) => {
+      console.error(err.message);
+      throw err;
+    })
+    .finally(() => {
+      console.log("Consulta a la Bd finalizada");
+    });
 };
 
 /**
@@ -77,18 +85,29 @@ const cargarPedidoConThen = (id) => {
  * "Total: $420", por ejemplo.
  */
 const totalDelPedido = (id) => {
-  // TODO PG4: implementa esta función.
-  throw new Error('TODO PG4 pendiente: implementar totalDelPedido(id)');
+  return obtenerPedido(id)
+    .then((pedido) => pedido.total)
+    .then((total) => `Total: $${total}`)
+    .then((msg) => console.log(msg));
 };
 
+// totalDelPedido("A-17");
 /**
  * TODO PG5. Reescribir el consumo mediante async/await.
  *
  * Espera obtenerPedido(id) y retorna el pedido.
  */
 const cargarPedido = async (id) => {
-  // TODO PG5: implementa esta función.
-  throw new Error('TODO PG5 pendiente: implementar cargarPedido(id)');
+  try {
+    const pedido = await obtenerPedido(id);
+    mostrarPedido(pedido);
+    return pedido;
+  } catch (error) {
+    mostrarError(error.message);
+    return null;
+  } finally {
+    mostrarCarga(false);
+  }
 };
 
 /**
@@ -97,7 +116,7 @@ const cargarPedido = async (id) => {
  */
 const mostrarCarga = (activa) => {
   // TODO PG6: actualiza el texto y el botón.
-  console.log('Estado de carga:', activa);
+  console.log("Estado de carga:", activa);
 };
 
 /**
@@ -105,7 +124,7 @@ const mostrarCarga = (activa) => {
  */
 const mostrarPedido = (pedido) => {
   // TODO PG6: genera el HTML del pedido.
-  console.log('Pedido recibido:', pedido);
+  console.log("Pedido recibido:", pedido);
 };
 
 /**
@@ -126,8 +145,6 @@ const mostrarError = (mensaje) => {
  * - Usa finally para desactivar la carga.
  */
 const consultarPedido = async (id) => {
-  // TODO PG6: implementa esta función.
-  throw new Error('TODO PG6 pendiente: implementar consultarPedido(id)');
 };
 
 /**
@@ -137,8 +154,19 @@ const consultarPedido = async (id) => {
  * Retorna un objeto con las propiedades pedido y repartidor.
  */
 const cargarResumen = async (id) => {
-  // TODO PG8: implementa esta función.
-  throw new Error('TODO PG8 pendiente: implementar cargarResumen(id)');
+  try {
+    const [pedido, repartidor] = await Promise.all([
+      obtenerPedido(id),
+      obtenerRepartidor(),
+    ]);
+
+    return {
+      pedido,
+      repartidor,
+    };
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
 /*
@@ -149,13 +177,12 @@ const cargarResumen = async (id) => {
  * - Llama a consultarPedido(id).
  */
 if (form) {
-  form.addEventListener('submit', event => {
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
-
-    // TODO PG6: normaliza el ID y llama consultarPedido(id).
-    console.log('Formulario listo. Falta completar el TODO PG6.');
+    const id = input.value.trim().toUpperCase();
+    console.log(id);
+    consultarPedido(id);
   });
 } else {
-  console.info('Completa el TODO 10 para habilitar el formulario.');
+  console.info("Completa el TODO 10 para habilitar el formulario.");
 }
-

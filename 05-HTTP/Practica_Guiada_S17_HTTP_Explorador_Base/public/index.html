@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorador HTTP</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#17233b}main{max-width:980px;margin:40px auto;padding:24px}h1{margin-bottom:6px}.panel{background:#fff;border:1px solid #d8e1ef;border-radius:14px;padding:20px;margin-top:18px}.controls{display:grid;grid-template-columns:130px 1fr auto;gap:10px}select,input,button,textarea{font:inherit;padding:11px;border:1px solid #b8c4d6;border-radius:8px}button{background:#2457d6;color:#fff;border:0;font-weight:700;cursor:pointer}textarea{width:100%;min-height:100px;margin-top:10px;font-family:Consolas,monospace}pre{min-height:230px;overflow:auto;background:#0b1325;color:#dce8f7;padding:18px;border-radius:10px;white-space:pre-wrap}.hint{color:#52627a}
+  </style>
+</head>
+<body>
+  <main>
+    <p class="hint">DASW · Sesión 17 · Práctica guiada</p>
+    <h1>Explorador HTTP</h1>
+    <p>Presiona Enviar y sigue el recorrido completo: solicitud, servidor y respuesta.</p>
+    <section class="panel">
+      <div class="controls">
+        <select id="method"><option>GET</option><option>POST</option><option>PATCH</option><option>DELETE</option></select>
+        <input id="path" value="/api/events" aria-label="Ruta">
+        <button id="send">Enviar</button>
+      </div>
+      <textarea id="body" aria-label="Cuerpo JSON">{"nombre":"Concierto","fecha":"2026-11-20"}</textarea>
+    </section>
+    <section class="panel"><h2>Respuesta</h2><pre id="output">Completa los TODO y envía una solicitud.</pre></section>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

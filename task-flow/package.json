@@ -21,5 +21,18 @@
   "nodemonConfig": {
     "ignore": ["**/test/**", "**/docs/**"],
     "delay": 1500
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/urielroblesg/DASW.git",
+    "directory": "task-flow"
+  },
+  "dasw": {
+    "branch": "task-flow",
+    "instructions": {
+      "clone": "git clone https://github.com/urielroblesg/DASW.git",
+      "checkout": "cd DASW && git checkout task-flow",
+      "pull": "git pull origin task-flow"
+    }
   }
 }

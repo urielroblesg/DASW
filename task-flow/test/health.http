@@ -2,27 +2,17 @@
 
 @baseUrl = http://localhost:3000
 
-
-###
-
+### GET - Revisar estado del server
 GET {{baseUrl}}/api/health HTTP/1.1
+Accept: application/json
 
-###
 
-POST url HTTP/1.1
-header name: header value
+### GET - Obtener info del sistema
+GET {{baseUrl}}/api/info HTTP/1.1
 
-{
+### GET - Obtener tareas
+GET {{baseUrl}}/api/tasks HTTP/1.1
 
-}
 
-###
-
-PUT url HTTP/1.1
-header name: header value
-
-content
-
- ###
-
-DELETE url HTTP/1.1
+### GET - Ruta innexistente
+GET {{baseUrl}}/api/no-existe HTTP/1.1

@@ -4,7 +4,7 @@ import express, { request, response } from 'express';
 
 const app = express();
 
-
+var saludo = 0;
 app.get('/api/health', (request, response) => {
     response.json({status: 'Ok', system: 'TaskFlow'});
 });

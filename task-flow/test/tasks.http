@@ -15,7 +15,7 @@ GET {{baseUrl}}/api/tasks
 Accept: application/json
 
 ### GET /api/tasks/1 - Una tarea
-GET {{baseUrl}}/api/tasks/1
+GET {{baseUrl}}/api/tasks/2
 Accept: application/json
 
 ### GET /api/tasks/999 - 404 y JSON
@@ -23,7 +23,7 @@ GET {{baseUrl}}/api/tasks/999
 Accept: application/json
 
 ### GET /api/tasks?status=TODO - Coincidencias por estado
-GET {{baseUrl}}/api/tasks?status=TODO
+GET {{baseUrl}}/api/tasks?status=DONE&project=TaskFlow
 Accept: application/json
 
 ### POST /api/tasks válido - 201 y tarea creada

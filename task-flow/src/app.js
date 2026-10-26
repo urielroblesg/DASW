@@ -40,17 +40,30 @@ app.get('/api/info', (request, response) => {
 });
 
 app.get('/api/tasks', (request, response) => {
-  const { status } = request.query;
+  const { status, project } = request.query;
 
-  console.log(status);
+  console.log(`Estatus solicitado: ${status ?? 'All'}`);
+  console.log(`Projecto solicitado: ${project ?? 'Default'}`);
 
-  let resultados = [];
+  let resultados = tasks;
 
   if (status?.trim()) {
     resultados = tasks.filter(t => t.status === status);
   }
 
-  response.json(resultados.length === 0 ? tasks : resultados);
+  if (project?.trim()) {
+    resultados = resultados.filter(t => t.project === project);
+  }
+
+  response.json(resultados);
+});
+
+app.get('/api/tasks/stats', (request, response) => {
+  response.json({
+    total: tasks.length,
+    todo: tasks.filter(t => t.status === 'TODO').length,
+    done: tasks.filter(t => t.status === 'DONE').length,
+  });
 });
 
 app.get('/api/tasks/:id', (request, response) => {
@@ -62,7 +75,7 @@ app.get('/api/tasks/:id', (request, response) => {
     return response.status(404).json({ mensaje: 'No se encontró la tarea ', id });
   }
 
-  response.json(task);
+  response.status(200).json(task);
 });
 
 app.post('/api/tasks', (request, response) => {
@@ -74,7 +87,7 @@ app.post('/api/tasks', (request, response) => {
     });
   }
 
-  const nextId = tasks.length + 1;
+  const nextId = Math.max(...tasks.map(item => item.id), 0) + 1;
 
   const task = {
     id: nextId,

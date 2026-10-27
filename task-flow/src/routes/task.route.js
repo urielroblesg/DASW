@@ -67,8 +67,37 @@ router.post('/', (request, response) => {
   response.status(201).json(task);
 });
 
-router.put('/:id');
+router.put('/:id', (request, response) => {
+  const id = Number(request.params.id);
 
-router.delete('/:id');
+  const index = tasks.findIndex(t => t.id === id);
+
+  if (index === -1) {
+    return response.status(404).json({ mensaje:'Tarea no encontrada' });
+  }
+
+  const { title, status, project = 'TaskFlow' } = request.body;
+
+  if (!title?.trim() || !status?.trim()) {
+    return response.status(400).json({
+      mensaje: 'title y status son obligatorios',
+    });
+  }
+
+  tasks[index] = { id, title, status, project };
+  response.json(tasks[index]);
+});
+
+router.delete('/:id', (request, response) => {
+  const id = Number(request.params.id);
+  const index = tasks.findIndex(t => t.id === id);
+
+  if (index === -1) {
+    return response.status(404).json({ mensaje:'Tarea no encontrada' });
+  }
+
+  tasks.splice(index, 1);
+  response.status(204).send();
+});
 
 export default router;

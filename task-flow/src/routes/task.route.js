@@ -17,7 +17,7 @@ router.get('/stats', (request, response) => {
 });
 
 router.get('/', (request, response) => {
-  const { status, project } = request.query;
+  const { status, project, sort } = request.query;
 
   let resultados = [...tasks];
 
@@ -28,6 +28,8 @@ router.get('/', (request, response) => {
   if (project?.trim()) {
     resultados = resultados.filter(t => t.project === project);
   }
+
+  if (sort === 'title') resultados.sort((a, b) => a.title.localeCompare(b.title));
 
   response.json(resultados);
 });
@@ -96,8 +98,8 @@ router.delete('/:id', (request, response) => {
     return response.status(404).json({ mensaje:'Tarea no encontrada' });
   }
 
-  tasks.splice(index, 1);
-  response.status(204).send();
+  const [tareaEliminada] = tasks.splice(index, 1);
+  response.status(200).json({ mensaje: 'Tarea Eliminada', tareaEliminada });
 });
 
 export default router;

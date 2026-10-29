@@ -1,10 +1,22 @@
 // Importaciones de modulos nativos y de terceros
 import path from 'node:path';
 import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
 // Importaciones de la aplicacion (Propias)
 import taskRouter from './routes/task.route.js';
+import { logger } from './middlewares/logger.js';
+import errorHandler from './middlewares/error.handler.js';
 
 const app = express();
+
+app.use(helmet());
+
+app.use(cors({
+  origin: 'http://127.0.0.1:5500',
+}));
+
+app.use(logger);
 
 app.use(express.json());
 
@@ -44,5 +56,7 @@ app.use((request, response) => {
   };
   response.status(404).json(mensaje);
 });
+
+app.use(errorHandler);
 
 export default app;

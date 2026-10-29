@@ -33,7 +33,17 @@ Content-Type: application/json
 {
   "title": "Agregar más rutar",
   "description": "Falta agregar ruta para PUT y DELETE, tal vez PATCH",
-  "status": "TODO"
+    "status": "TODO"
+}
+
+###
+PUT {{baseUrl}}/api/v1/tasks/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Agregar más rutas Con Validaciones",
+  "description": "Falta agregar ruta para PUT y DELETE, tal vez PATCH",
+    "status": "TODO"
 }
 
 ### POST /api/v1/tasks vacío - 400 y JSON

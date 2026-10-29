@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { validarTask } from '../middlewares/validar.task.js';
 
 const router = Router();
 
@@ -46,14 +47,8 @@ router.get('/:id', (request, response) => {
   response.status(200).json(task);
 });
 
-router.post('/', (request, response) => {
+router.post('/', validarTask, (request, response) => {
   const { title, status, project = 'TaskFlow' } = request.body;
-
-  if (!title?.trim() || !status?.trim()) {
-    return response.status(400).json({
-      mensaje: 'title y status son obligatorios',
-    });
-  }
 
   const nextId = Math.max(...tasks.map(item => item.id), 0) + 1;
 
@@ -69,7 +64,7 @@ router.post('/', (request, response) => {
   response.status(201).json(task);
 });
 
-router.put('/:id', (request, response) => {
+router.put('/:id', validarTask, (request, response) => {
   const id = Number(request.params.id);
 
   const index = tasks.findIndex(t => t.id === id);
@@ -79,12 +74,6 @@ router.put('/:id', (request, response) => {
   }
 
   const { title, status, project = 'TaskFlow' } = request.body;
-
-  if (!title?.trim() || !status?.trim()) {
-    return response.status(400).json({
-      mensaje: 'title y status son obligatorios',
-    });
-  }
 
   tasks[index] = { id, title, status, project };
   response.json(tasks[index]);

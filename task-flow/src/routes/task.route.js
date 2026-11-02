@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { validarTask } from '../middlewares/validar.task.js';
+import { taskRules } from '../middlewares/task.validator.js';
+import { validateRequest } from '../middlewares/validate.request.js';
 
 const router = Router();
 
@@ -47,7 +48,7 @@ router.get('/:id', (request, response) => {
   response.status(200).json(task);
 });
 
-router.post('/', validarTask, (request, response) => {
+router.post('/', taskRules, validateRequest, (request, response) => {
   const { title, status, project = 'TaskFlow' } = request.body;
 
   const nextId = Math.max(...tasks.map(item => item.id), 0) + 1;
@@ -64,7 +65,7 @@ router.post('/', validarTask, (request, response) => {
   response.status(201).json(task);
 });
 
-router.put('/:id', validarTask, (request, response) => {
+router.put('/:id', taskRules, validateRequest, (request, response) => {
   const id = Number(request.params.id);
 
   const index = tasks.findIndex(t => t.id === id);

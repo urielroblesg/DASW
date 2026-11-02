@@ -3,9 +3,9 @@ import path from 'node:path';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import morgan from 'morgan';
 // Importaciones de la aplicacion (Propias)
 import taskRouter from './routes/task.route.js';
-import { logger } from './middlewares/logger.js';
 import errorHandler from './middlewares/error.handler.js';
 
 const app = express();
@@ -16,7 +16,9 @@ app.use(cors({
   origin: 'http://127.0.0.1:5500',
 }));
 
-app.use(logger);
+const entorno = process.env.ENV ?? 'DEV';
+
+app.use(morgan((entorno === 'DEV') ? 'dev' : 'combined'));
 
 app.use(express.json());
 

@@ -5,6 +5,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 // Importaciones de la aplicacion (Propias)
+import enrutadorAutenticacion from './routes/autenticacion.rutas.js';
 import enrutadorTarea from './routes/tarea.rutas.js';
 import manejadorErrores from './middlewares/manejador.errores.js';
 
@@ -24,6 +25,7 @@ const directorioPublico = path.join(process.cwd(), 'public');
 
 aplicacion.use('/assets', express.static(path.join(directorioPublico, 'assets')));
 
+aplicacion.use('/api/v1/auth', enrutadorAutenticacion);
 aplicacion.use('/api/v1/tasks', enrutadorTarea);
 
 aplicacion.get('/', (solicitud, respuesta) => {

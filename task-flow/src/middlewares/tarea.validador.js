@@ -1,6 +1,6 @@
 import { checkSchema } from 'express-validator';
 
-export const taskRules = checkSchema({
+export const reglasTarea = checkSchema({
   title: {
     trim: true,
     notEmpty: {

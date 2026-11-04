@@ -1,5 +1,5 @@
-import app from './app.js';
+import aplicacion from './app.js';
 
-const PORT = process.env.PORT || 3000;
+const PUERTO = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`TaskFlow en http://localhost:${PORT}`));
+aplicacion.listen(PUERTO, () => console.log(`TaskFlow en http://localhost:${PUERTO}`));

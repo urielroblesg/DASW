@@ -5,60 +5,56 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 // Importaciones de la aplicacion (Propias)
-import taskRouter from './routes/task.route.js';
-import errorHandler from './middlewares/error.handler.js';
+import enrutadorTarea from './routes/tarea.rutas.js';
+import manejadorErrores from './middlewares/manejador.errores.js';
 
-const app = express();
+const aplicacion = express();
 
-app.use(helmet());
+aplicacion.use(helmet());
 
-app.use(cors({
-  origin: 'http://127.0.0.1:5500',
+aplicacion.use(cors({
+  origin: process.env.FRONTEND_ORIGIN,
 }));
 
-const entorno = process.env.ENV ?? 'DEV';
+aplicacion.use(morgan('dev'));
 
-app.use(morgan((entorno === 'DEV') ? 'dev' : 'combined'));
+aplicacion.use(express.json());
 
-app.use(express.json());
+const directorioPublico = path.join(process.cwd(), 'public');
 
-const publicDir = path.join(process.cwd(), 'public');
+aplicacion.use('/assets', express.static(path.join(directorioPublico, 'assets')));
 
-console.log(publicDir);
+aplicacion.use('/api/v1/tasks', enrutadorTarea);
 
-app.use('/assets', express.static(path.join(publicDir, 'assets')));
-
-app.use('/api/v1/tasks', taskRouter);
-
-app.get('/', (request, response) => {
-  response.sendFile('index.html', {
-    root: path.join(publicDir, 'views'),
+aplicacion.get('/', (solicitud, respuesta) => {
+  respuesta.sendFile('index.html', {
+    root: path.join(directorioPublico, 'views'),
     dotfiles: 'deny',
   });
 });
 
-app.get('/api/health', (request, response) => {
-  response.json({ status: 'Ok', system: 'TaskFlow' });
+aplicacion.get('/api/health', (solicitud, respuesta) => {
+  respuesta.json({ status: 'Ok', system: 'TaskFlow' });
 });
 
-app.get('/api/info', (request, response) => {
-  const info = {
+aplicacion.get('/api/info', (solicitud, respuesta) => {
+  const informacion = {
     name : 'TaskFlow',
     version: '1.0.0',
     description: 'TaskFlow, el sistema de seguimiento de tareas y proyectos.',
   };
 
-  response.json(info);
+  respuesta.json(informacion);
 });
 
-app.use((request, response) => {
+aplicacion.use((solicitud, respuesta) => {
   const mensaje = {
     mensaje: 'Ruta no encontrada',
-    path: request.path,
+    path: solicitud.path,
   };
-  response.status(404).json(mensaje);
+  respuesta.status(404).json(mensaje);
 });
 
-app.use(errorHandler);
+aplicacion.use(manejadorErrores);
 
-export default app;
+export default aplicacion;

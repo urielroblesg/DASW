@@ -1,57 +1,58 @@
+@baseUrl = http://localhost:3000/api/v1/tasks
 
-@baseUrl = http://localhost:3000
-
-
-### GET / - Entrega index.html mediante ruta Express
-GET {{baseUrl}}/
-Accept: text/html
-
-### GET /assets/css/app.css - Entrega recurso estático
-GET {{baseUrl}}/assets/css/app.css
-Accept: text/css
-
-### GET /api/v1/tasks - Tareas completas
-GET {{baseUrl}}/api/v1/tasks
+### Listar tareas
+GET {{baseUrl}}
 Accept: application/json
 
-### GET /api/v1/tasks/1 - Una tarea
-GET {{baseUrl}}/api/v1/tasks/4
+### Filtrar tareas
+GET {{baseUrl}}?status=TODO&project=TaskFlow
 Accept: application/json
 
-### GET /api/v1/tasks/999 - 404 y JSON
-GET {{baseUrl}}/api/v1/tasks/999
+### Obtener tarea existente
+GET {{baseUrl}}/1
 Accept: application/json
 
-### GET /api/v1/tasks?status=TODO - Coincidencias por estado
-GET {{baseUrl}}/api/v1/tasks?status=DONE&project=TaskFlow
+### Obtener tarea inexistente: 404
+GET {{baseUrl}}/999
 Accept: application/json
 
-### POST /api/v1/tasks válido - 201 y tarea creada
-POST {{baseUrl}}/api/v1/tasks
+### Crear tarea: 201
+POST {{baseUrl}}
 Content-Type: application/json
 
 {
-  "title": "Agregar más rutar",
-  "description": "Falta agregar ruta para PUT y DELETE, tal vez PATCH",
-    "status": "TODO"
+  "title": "Agregar rutas",
+  "status": "TODO",
+  "project": "TaskFlow"
 }
 
-###
-PUT {{baseUrl}}/api/v1/tasks/1 HTTP/1.1
-Content-Type: application/json
-
-{
-  "title": "Agregar más rutas Con Validaciones",
-  "description": "Falta agregar ruta para PUT y DELETE, tal vez PATCH",
-    "status": "TODO"
-}
-
-### POST /api/v1/tasks vacío - 400 y JSON
-POST {{baseUrl}}/api/v1/tasks
+### Crear tarea inválida: 400
+POST {{baseUrl}}
 Content-Type: application/json
 
 {}
 
-### GET /api/v1/tasks/stats - Totales correctos
-GET {{baseUrl}}/api/v1/tasks/stats
-Accept: application/json
+### Actualizar tarea
+PUT {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "title": "Diseñar API REST actualizada",
+  "status": "DONE",
+  "project": "TaskFlow"
+}
+
+### Actualizar tarea inexistente: 404
+PUT {{baseUrl}}/999
+Content-Type: application/json
+
+{
+  "title": "Tarea inexistente",
+  "status": "TODO"
+}
+
+### Eliminar tarea: 204
+DELETE {{baseUrl}}/3
+
+### Eliminar tarea inexistente: 404
+DELETE {{baseUrl}}/999

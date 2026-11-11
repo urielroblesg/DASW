@@ -14,8 +14,8 @@ describe('rutas de tareas', () => {
     expect(rutas(rutasTarea)).toEqual([
       { handlers: 1, method: 'get', path: '/' },
       { handlers: 1, method: 'get', path: '/:id' },
-      { handlers: 5, method: 'post', path: '/' },
-      { handlers: 5, method: 'put', path: '/:id' },
+      { handlers: 1, method: 'post', path: '/' },
+      { handlers: 1, method: 'patch', path: '/:id' },
       { handlers: 1, method: 'delete', path: '/:id' },
     ]);
   });

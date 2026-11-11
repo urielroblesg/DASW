@@ -1,40 +1,30 @@
-const tareas = [
-  { id: 1, title: 'Diseñar API REST', status: 'TODO', project: 'TaskFlow' },
-  { id: 2, title: 'Separar rutas', status: 'DONE', project: 'TaskFlow' },
-  { id: 3, title: 'Preparar pruebas', status: 'TODO', project: 'DASW' },
-];
+import { Task } from '../entities/tarea.entidad.js';
 
-export const buscarTodas = async ({ status, project } = {}) => tareas.filter(tarea => {
-  const coincideEstado = !status || tarea.status === status;
-  const coincideProyecto = !project || tarea.project === project;
-  return coincideEstado && coincideProyecto;
-});
+const toDto = (doc) => {
+  if (!doc) return null;
+  const value = doc.toObject();
+  value.id = String(value._id);
+  delete value._id;
+  delete value.__v;
+  return value;
+};
 
-export const buscarPorId = async identificador => tareas.find(
-  tarea => tarea.id === Number(identificador),
-);
+export const buscarTodas = async (filtros = {}) => (await Task.find(filtros)).map(toDto);
+
+export const buscarPorId = async identificador => toDto(await Task.findById(identificador));
 
 export const crear = async datos => {
-  const siguienteId = Math.max(...tareas.map(tarea => tarea.id), 0) + 1;
-  const tarea = { ...datos, id: siguienteId };
-  tareas.push(tarea);
-  return tarea;
+  const task = await Task.create(datos);
+  return toDto(task);
 };
 
 export const actualizar = async (identificador, datos) => {
-  const indice = tareas.findIndex(tarea => tarea.id === Number(identificador));
-  if (indice === -1) {
-    return null;
-  }
-  tareas[indice] = { ...datos, id: tareas[indice].id };
-  return tareas[indice];
+  const taskActualizada = await Task.findByIdAndUpdate(identificador, { $set: datos }, {
+    returnDocument: 'after',
+    runValidators: true,
+  });
+
+  return toDto(taskActualizada);
 };
 
-export const eliminar = async identificador => {
-  const indice = tareas.findIndex(tarea => tarea.id === Number(identificador));
-  if (indice === -1) {
-    return false;
-  }
-  tareas.splice(indice, 1);
-  return true;
-};
+export const eliminar = async identificador => toDto(await Task.findByIdAndDelete(identificador));

@@ -4,8 +4,12 @@ const repositorio = {
   buscarPorCorreo: jest.fn(),
   crear: jest.fn(),
 };
+const repositorioRol = {
+  buscarPorNombre: jest.fn(),
+};
 
 jest.unstable_mockModule('../../../src/repositories/usuario.repositorio.js', () => repositorio);
+jest.unstable_mockModule('../../../src/repositories/rol.repositorio.js', () => repositorioRol);
 
 let cerrar;
 let iniciar;
@@ -21,6 +25,7 @@ beforeAll(async () => {
 
 beforeEach(() => {
   jest.clearAllMocks();
+  repositorioRol.buscarPorNombre.mockResolvedValue({ _id: 'cliente-id' });
 });
 
 describe('casos de uso de autenticación', () => {
@@ -30,11 +35,27 @@ describe('casos de uso de autenticación', () => {
     const resultado = await registrar.ejecutar({ email: 'ana@example.com', name: 'Ana', password: 'secreto12' });
     expect(resultado).toMatchObject({ email: 'ana@example.com', id: 1, name: 'Ana' });
     expect(resultado).not.toHaveProperty('password');
+    expect(repositorio.crear).toHaveBeenCalledWith(expect.objectContaining({ rol: 'cliente-id' }));
+  });
+
+  it('ignora el rol recibido y asigna Cliente', async () => {
+    repositorio.buscarPorCorreo.mockResolvedValue(null);
+    repositorio.crear.mockImplementation(async usuario => ({ ...usuario, id: 1 }));
+    await registrar.ejecutar({ email: 'ana@example.com', name: 'Ana', password: 'secreto12', rol: 'administrador-id' });
+    expect(repositorio.crear).toHaveBeenCalledWith(expect.objectContaining({ rol: 'cliente-id' }));
   });
 
   it('rechaza correo registrado', async () => {
     repositorio.buscarPorCorreo.mockResolvedValue({ id: 1 });
     await expect(registrar.ejecutar({ email: 'ana@example.com' })).resolves.toBeNull();
+    expect(repositorio.crear).not.toHaveBeenCalled();
+  });
+
+  it('rechaza registro cuando no existe el rol Cliente', async () => {
+    repositorio.buscarPorCorreo.mockResolvedValue(null);
+    repositorioRol.buscarPorNombre.mockResolvedValue(null);
+    await expect(registrar.ejecutar({ email: 'ana@example.com' }))
+      .rejects.toThrow('No existe el rol Cliente');
     expect(repositorio.crear).not.toHaveBeenCalled();
   });
 

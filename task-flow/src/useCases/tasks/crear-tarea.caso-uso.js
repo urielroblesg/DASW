@@ -1,7 +1,4 @@
-import { Tarea } from '../../entities/tarea.entidad.js';
 import * as repositorioTarea from '../../repositories/tarea.repositorio.js';
+import { validarEntrada } from './tarea.validaciones.js';
 
-export const ejecutar = async datos => {
-  const tarea = new Tarea(datos);
-  return await repositorioTarea.crear(tarea);
-};
+export const ejecutar = async datos => repositorioTarea.crear(validarEntrada(datos));

@@ -1,34 +1,46 @@
 import { beforeAll, beforeEach, describe, expect, it, jest } from '@jest/globals';
 
-let contenido;
-let repositorio;
-const readFile = jest.fn();
-const writeFile = jest.fn();
+const Usuario = {
+  create: jest.fn(),
+  findOne: jest.fn(),
+};
 
-jest.unstable_mockModule('node:fs/promises', () => ({ readFile, writeFile }));
+jest.unstable_mockModule('../../../src/entities/usuario.entidad.js', () => ({ Usuario }));
+
+let repositorio;
+const documento = datos => ({
+  toObject: () => ({ __v: 0, _id: '507f1f77bcf86cd799439011', ...datos }),
+});
 
 beforeAll(async () => {
   repositorio = await import('../../../src/repositories/usuario.repositorio.js');
 });
 
 beforeEach(() => {
-  contenido = [{ email: 'ana@example.com', id: 1, name: 'Ana' }];
-  readFile.mockImplementation(async () => JSON.stringify(contenido));
-  writeFile.mockImplementation(async (_ruta, datos) => {
-    contenido = JSON.parse(datos);
-  });
+  jest.clearAllMocks();
 });
 
 describe('repositorio de usuarios', () => {
   it('busca usuario por correo', async () => {
-    await expect(repositorio.buscarPorCorreo('ana@example.com')).resolves.toMatchObject({ id: 1 });
+    Usuario.findOne.mockResolvedValue(documento({ email: 'ana@example.com', password: 'secreto12' }));
+    await expect(repositorio.buscarPorCorreo('ana@example.com')).resolves.toEqual({
+      email: 'ana@example.com',
+      id: '507f1f77bcf86cd799439011',
+      password: 'secreto12',
+    });
+    expect(Usuario.findOne).toHaveBeenCalledWith({ email: 'ana@example.com' });
+
+    Usuario.findOne.mockResolvedValue(null);
     await expect(repositorio.buscarPorCorreo('nadie@example.com')).resolves.toBeNull();
   });
 
-  it('crea usuario y persiste JSON formateado', async () => {
-    await expect(repositorio.crear({ email: 'bob@example.com' }))
-      .resolves.toEqual({ email: 'bob@example.com', id: 2 });
-    expect(writeFile).toHaveBeenCalledWith(expect.stringContaining('users.json'), expect.stringContaining('\n  '));
-    expect(contenido).toHaveLength(2);
+  it('crea usuario mediante el modelo y devuelve DTO', async () => {
+    const datos = { email: 'bob@example.com', password: 'secreto12' };
+    Usuario.create.mockResolvedValue(documento(datos));
+    await expect(repositorio.crear(datos)).resolves.toEqual({
+      ...datos,
+      id: '507f1f77bcf86cd799439011',
+    });
+    expect(Usuario.create).toHaveBeenCalledWith(datos);
   });
 });

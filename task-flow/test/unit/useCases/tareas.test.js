@@ -1,13 +1,8 @@
 import { beforeAll, beforeEach, describe, expect, it, jest } from '@jest/globals';
 
 const repositorio = {
-  actualizar: jest.fn(),
-  buscarPorId: jest.fn(),
-  buscarTodas: jest.fn(),
-  crear: jest.fn(),
-  eliminar: jest.fn(),
+  actualizar: jest.fn(), buscarPorId: jest.fn(), buscarTodas: jest.fn(), crear: jest.fn(), eliminar: jest.fn(),
 };
-
 jest.unstable_mockModule('../../../src/repositories/tarea.repositorio.js', () => repositorio);
 
 let actualizar;
@@ -15,6 +10,7 @@ let crear;
 let eliminar;
 let listar;
 let obtener;
+const ID = '507f1f77bcf86cd799439011';
 
 beforeAll(async () => {
   [actualizar, crear, eliminar, listar, obtener] = await Promise.all([
@@ -26,43 +22,46 @@ beforeAll(async () => {
   ]);
 });
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
+beforeEach(() => jest.clearAllMocks());
 
 describe('casos de uso de tareas', () => {
-  it('crea entidad y la guarda', async () => {
-    repositorio.crear.mockImplementation(async tarea => ({ ...tarea, id: 1 }));
-    await expect(crear.ejecutar({ title: ' Nueva ' }))
-      .resolves.toEqual({ id: 1, project: 'TaskFlow', status: 'TODO', title: 'Nueva' });
+  it('crea usando solo campos permitidos', async () => {
+    repositorio.crear.mockResolvedValue({ id: ID, title: 'Nueva' });
+    await expect(crear.ejecutar({ title: 'Nueva' })).resolves.toMatchObject({ id: ID });
+    expect(repositorio.crear).toHaveBeenCalledWith({ title: 'Nueva' });
   });
 
-  it('delega listado con filtros', async () => {
+  it('rechaza campos no permitidos', async () => {
+    await expect(crear.ejecutar({ ownerId: ID, title: 'Nueva' })).rejects.toMatchObject({ status: 400 });
+  });
+
+  it('valida filtro de estado', async () => {
     repositorio.buscarTodas.mockResolvedValue(['tarea']);
-    await expect(listar.ejecutar({ status: 'TODO' })).resolves.toEqual(['tarea']);
-    expect(repositorio.buscarTodas).toHaveBeenCalledWith({ status: 'TODO' });
+    await expect(listar.ejecutar({ status: 'pending' })).resolves.toEqual(['tarea']);
+    await expect(listar.ejecutar({ status: 'otro' })).rejects.toMatchObject({ status: 400 });
   });
 
-  it('delega búsqueda por identificador', async () => {
-    repositorio.buscarPorId.mockResolvedValue({ id: 2 });
-    await expect(obtener.ejecutar('2')).resolves.toEqual({ id: 2 });
+  it('obtiene por ObjectId y genera 404', async () => {
+    repositorio.buscarPorId.mockResolvedValueOnce({ id: ID }).mockResolvedValueOnce(null);
+    await expect(obtener.ejecutar(ID)).resolves.toEqual({ id: ID });
+    await expect(obtener.ejecutar(ID)).rejects.toMatchObject({ status: 404 });
   });
 
-  it('actualiza una tarea existente', async () => {
-    repositorio.buscarPorId.mockResolvedValue({ project: 'DASW', status: 'TODO', title: 'Vieja' });
-    repositorio.actualizar.mockImplementation(async (_id, tarea) => tarea);
-    await expect(actualizar.ejecutar(1, { status: 'DONE', title: ' Nueva ' }))
-      .resolves.toEqual({ project: 'DASW', status: 'DONE', title: 'Nueva' });
+  it('rechaza identificador inválido', async () => {
+    await expect(obtener.ejecutar('abc')).rejects.toMatchObject({ status: 400 });
   });
 
-  it('no actualiza una tarea inexistente', async () => {
-    repositorio.buscarPorId.mockResolvedValue(null);
-    await expect(actualizar.ejecutar(99, { title: 'Nada' })).resolves.toBeNull();
-    expect(repositorio.actualizar).not.toHaveBeenCalled();
+  it('actualiza tarea existente', async () => {
+    repositorio.actualizar.mockResolvedValue({ id: ID, status: 'done' });
+    await expect(actualizar.ejecutar(ID, { status: 'done' })).resolves.toMatchObject({ status: 'done' });
   });
 
-  it('delega eliminación', async () => {
-    repositorio.eliminar.mockResolvedValue(true);
-    await expect(eliminar.ejecutar(1)).resolves.toBe(true);
+  it('rechaza actualización vacía', async () => {
+    await expect(actualizar.ejecutar(ID, {})).rejects.toMatchObject({ status: 400 });
+  });
+
+  it('elimina tarea existente', async () => {
+    repositorio.eliminar.mockResolvedValue({ id: ID });
+    await expect(eliminar.ejecutar(ID)).resolves.toEqual({ id: ID });
   });
 });

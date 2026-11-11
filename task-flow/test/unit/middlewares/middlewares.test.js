@@ -40,26 +40,23 @@ describe('validadores de autenticación', () => {
 
 describe('validador de tarea', () => {
   it('acepta y limpia tarea válida', async () => {
-    const resultado = await validar(reglasTarea, { project: ' DASW ', status: 'DONE', title: ' Probar ' });
+    const resultado = await validar(reglasTarea, { priority: 'high', status: 'done', title: ' Probar ' });
     expect(resultado.siguiente).toHaveBeenCalled();
-    expect(resultado.solicitud.body).toEqual({ project: 'DASW', status: 'DONE', title: 'Probar' });
+    expect(resultado.solicitud.body).toEqual({ priority: 'high', status: 'done', title: 'Probar' });
   });
 
   it('rechaza campos inválidos', async () => {
-    const { respuesta } = await validar(reglasTarea, { project: ' ', status: 'PENDING', title: '' });
+    const { respuesta } = await validar(reglasTarea, { priority: 'urgente', status: 'PENDING', title: '' });
     expect(respuesta.status).toHaveBeenCalledWith(400);
     expect(respuesta.json.mock.calls[0][0].errores).toHaveLength(3);
   });
 });
 
 describe('manejador de errores', () => {
-  it('registra error y responde 500', () => {
+  it('oculta error interno y responde 500', () => {
     const respuesta = crearRespuesta();
-    jest.spyOn(console, 'error').mockImplementation(() => {});
     manejadorErrores(new Error('fallo'), {}, respuesta, jest.fn());
-    expect(console.error).toHaveBeenCalledWith('fallo');
     expect(respuesta.status).toHaveBeenCalledWith(500);
-    expect(respuesta.json).toHaveBeenCalledWith({ mensaje: 'Error interno en el servidor' });
-    console.error.mockRestore();
+    expect(respuesta.json).toHaveBeenCalledWith({ message: 'Error interno' });
   });
 });

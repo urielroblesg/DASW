@@ -3,22 +3,24 @@ import { checkSchema } from 'express-validator';
 export const reglasTarea = checkSchema({
   title: {
     trim: true,
-    notEmpty: {
-      errorMessage: 'El titulo es obligatorio',
-    },
+    notEmpty: { errorMessage: 'El título es obligatorio' },
+  },
+  description: {
+    optional: true,
+    isString: { errorMessage: 'La descripción debe ser texto' },
   },
   status: {
-    trim:  true,
+    optional: true,
     isIn: {
-      options: [['TODO', 'DONE']],
-      errorMessage: 'El estado no es valido',
+      options: [['pending', 'in_progress', 'done']],
+      errorMessage: 'El estado no es válido',
     },
   },
-  project: {
+  priority: {
     optional: true,
-    trim: true,
-    notEmpty: {
-      errorMessage: 'El proyecto no es valido',
+    isIn: {
+      options: [['low', 'medium', 'high']],
+      errorMessage: 'La prioridad no es válida',
     },
   },
 });

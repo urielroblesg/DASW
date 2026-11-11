@@ -34,13 +34,11 @@ describe('controlador de tareas', () => {
     expect(respuesta.json).toHaveBeenCalledWith([{ id: 1 }]);
   });
 
-  it('obtiene tarea o responde 404', async () => {
+  it('obtiene tarea', async () => {
     const respuesta = crearRespuesta();
-    casos.obtener.mockResolvedValueOnce({ id: 1 }).mockResolvedValueOnce(null);
+    casos.obtener.mockResolvedValue({ id: 1 });
     await controlador.obtenerPorId({ params: { id: '1' } }, respuesta, jest.fn());
     expect(respuesta.json).toHaveBeenCalledWith({ id: 1 });
-    await controlador.obtenerPorId({ params: { id: '9' } }, respuesta, jest.fn());
-    expect(respuesta.status).toHaveBeenCalledWith(404);
   });
 
   it('crea con estado 201', async () => {
@@ -51,22 +49,18 @@ describe('controlador de tareas', () => {
     expect(respuesta.json).toHaveBeenCalledWith({ id: 4 });
   });
 
-  it('actualiza tarea o responde 404', async () => {
+  it('actualiza tarea', async () => {
     const respuesta = crearRespuesta();
-    casos.actualizar.mockResolvedValueOnce({ id: 1 }).mockResolvedValueOnce(null);
+    casos.actualizar.mockResolvedValue({ id: 1 });
     await controlador.actualizar({ body: {}, params: { id: '1' } }, respuesta, jest.fn());
     expect(respuesta.json).toHaveBeenCalledWith({ id: 1 });
-    await controlador.actualizar({ body: {}, params: { id: '9' } }, respuesta, jest.fn());
-    expect(respuesta.status).toHaveBeenCalledWith(404);
   });
 
-  it('elimina con 204 o responde 404', async () => {
+  it('elimina con 204', async () => {
     const respuesta = crearRespuesta();
-    casos.eliminar.mockResolvedValueOnce(true).mockResolvedValueOnce(false);
+    casos.eliminar.mockResolvedValue({ id: 1 });
     await controlador.eliminar({ params: { id: '1' } }, respuesta, jest.fn());
     expect(respuesta.status).toHaveBeenCalledWith(204);
-    await controlador.eliminar({ params: { id: '9' } }, respuesta, jest.fn());
-    expect(respuesta.status).toHaveBeenCalledWith(404);
   });
 
   it.each(['listar', 'obtenerPorId', 'crear', 'actualizar', 'eliminar'])('propaga errores desde %s', async metodo => {

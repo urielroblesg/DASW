@@ -16,9 +16,6 @@ export const listar = async (solicitud, respuesta, siguiente) => {
 export const obtenerPorId = async (solicitud, respuesta, siguiente) => {
   try {
     const tarea = await obtenerTareaPorId.ejecutar(solicitud.params.id);
-    if (!tarea) {
-      return respuesta.status(404).json({ message: 'Tarea no encontrada' });
-    }
     return respuesta.json(tarea);
   } catch (error) {
     siguiente(error);
@@ -37,9 +34,6 @@ export const crear = async (solicitud, respuesta, siguiente) => {
 export const actualizar = async (solicitud, respuesta, siguiente) => {
   try {
     const tarea = await actualizarTarea.ejecutar(solicitud.params.id, solicitud.body);
-    if (!tarea) {
-      return respuesta.status(404).json({ message: 'Tarea no encontrada' });
-    }
     return respuesta.json(tarea);
   } catch (error) {
     siguiente(error);
@@ -48,10 +42,7 @@ export const actualizar = async (solicitud, respuesta, siguiente) => {
 
 export const eliminar = async (solicitud, respuesta, siguiente) => {
   try {
-    const eliminada = await eliminarTarea.ejecutar(solicitud.params.id);
-    if (!eliminada) {
-      return respuesta.status(404).json({ message: 'Tarea no encontrada' });
-    }
+    await eliminarTarea.ejecutar(solicitud.params.id);
     return respuesta.status(204).send();
   } catch (error) {
     siguiente(error);
